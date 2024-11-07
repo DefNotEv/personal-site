@@ -264,6 +264,14 @@ html {
     font-size: 1.2rem;
   }
 
+  .dropdown-container {
+    position: relative; /* Ensure proper positioning within the container */
+    width: 100%; /* Full width to take up the space */
+    max-width: 800px; /* Optional: limit max width */
+    margin: 20px auto; /* Center the container horizontally */
+    z-index: 0; /* Ensure the dropdown container is behind the content */
+  }
+
   /* Full-width dropdown sections on mobile */
   .dropdown-section {
     width: 95%;          /* Slightly expanded width to avoid cramped look */
@@ -309,5 +317,15 @@ html {
 
   .social-icons {
     gap: 1em;
+  }
+
+  /* Add some space between the STEM and Not STEM sections */
+  #stem-section {
+    margin-bottom: 25em; /* Adds space below the STEM section */
+  }
+
+  /* Add space between Not STEM and the bottom of the page */
+  #not-stem-section {
+    margin-bottom: 30em; /* Adds space below the Not STEM section */
   }
 }
