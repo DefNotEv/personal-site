@@ -32,6 +32,29 @@ html {
   text-align: center;
 }
 
+/* Floating Button */
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.floating-button button {
+  background-color: #fff;
+  border-radius: 50%; /* Ensures the button is circular */
+  width: 60px; /* Set a fixed width */
+  height: 60px; /* Set a fixed height, same as width */
+  font-size: 24px; /* Adjust font size for the icon */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-button button:hover {
+  background-color: #ddd;
+}
+
 .main-title {
   font-size: 3rem;
   font-weight: bold;
@@ -336,4 +359,92 @@ html {
   #not-stem-section {
     margin-bottom: 30em; /* Adds space below the Not STEM section */
   }
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+  background-color: #4c0000;
+  color: #ffffff;
+}
+
+/* Header, Footer, and other sections */
+body.dark-mode header,
+body.dark-mode footer {
+  background-color: #150303; /* Dark background for header/footer */
+  color:#150303
+}
+
+/* Floating Button */
+body.dark-mode .floating-button button {
+  background-color: #4c0000; /* Dark background for the floating button */
+}
+
+/* Change background color for all sections */
+body.dark-mode .landing-page {
+  background-color: #4c0000; /* Dark background for landing page */
+}
+body.dark-mode .main-title,
+body.dark-mode .subheading,
+body.dark-mode .tile,
+body.dark-mode .content-section h2,
+body.dark-mode .about-section h2,
+body.dark-mode .dropdown-section p {
+  color: #ffffff; /* Ensure titles, subheadings, and general text are white */
+}
+
+body.dark-mode .about-section,
+body.dark-mode .content-section,
+body.dark-mode .dropdown-section {
+  background-color: #4c0000; /* Dark background for all sections */
+  color: #ffffff; /* Light text color */
+}
+
+/* Adjust tile backgrounds */
+body.dark-mode .tile {
+  background-color: #992020; /* Dark background for tiles */
+  color: #ffffff; /* Light text color for tiles */
+}
+
+body.dark-mode .tile:hover {
+  background-color: #721717; /* Darker tile background on hover */
+}
+
+/* Dropdown Section */
+body.dark-mode .dropdown-section {
+  background-color: #4c0000; /* Dark background for dropdowns */
+  color: #ffffff; /* Light text color in dropdowns */
+}
+
+/* Resource Button in Dark Mode */
+body.dark-mode .resource-button {
+  background-color: #992020; /* Dark background for resource buttons */
+  color: #ffffff; /* Light text color */
+}
+
+body.dark-mode .resource-button:hover {
+  background-color: #721717; /* Darker background on hover */
+}
+
+/* Footer */
+body.dark-mode .footer {
+  background-color: #992020; /* Dark footer background */
+}
+
+/* Social Icons in Dark Mode */
+body.dark-mode .social-icon {
+  color: #ffffff; /* Light color for social icons */
+}
+
+body.dark-mode .social-icon:hover {
+  color: #f5f5f5; /* Change to a highlight color on hover */
+}
+
+/* Adjust the Scroll Button */
+body.dark-mode .scroll-button {
+  background-color: #992020; /* Dark background for scroll button */
+  color: #ffffff; /* Light text color */
+}
+
+body.dark-mode .scroll-button:hover {
+  background-color: #721717; /* Darker on hover */
 }
