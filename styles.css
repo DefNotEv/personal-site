@@ -388,6 +388,7 @@ body.dark-mode .subheading,
 body.dark-mode .tile,
 body.dark-mode .content-section h2,
 body.dark-mode .about-section h2,
+body.dark-mode .footer,
 body.dark-mode .dropdown-section p {
   color: #ffffff; /* Ensure titles, subheadings, and general text are white */
 }
