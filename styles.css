@@ -228,6 +228,14 @@ html {
   color: #f5f5f5; /* Change color when hovered */
 }
 
+/* Copyright Notice Styling */
+.copyright {
+  font-size: 1rem;  /* Font size for copyright text */
+  color: #ffffff;   /* Text color */
+  text-align: center; /* Center-align the text */
+  margin-top: 1.5em; /* Space above the text */
+}
+
 /* Responsive Styling */
 @media (max-width: 768px) {
   /* Adjust main title and subheading font sizes */
