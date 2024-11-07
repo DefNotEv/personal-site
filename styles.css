@@ -266,16 +266,29 @@ html {
 
   /* Full-width dropdown sections on mobile */
   .dropdown-section {
-    width: 90%;
-    max-width: 100%;
-    padding: 1em;
+    width: 95%;          /* Slightly expanded width to avoid cramped look */
+    max-width: 100%;     /* Limit width to full screen */
+    margin: 1em auto;    /* Center align dropdown section on mobile */
+    padding: 1.5em;      /* Increase padding for more space */
+    box-shadow: none;    /* Remove shadow for cleaner look */
+    text-align: center;  /* Center-align content within dropdown */
   }
 
   /* Center-align text and buttons in dropdown sections */
   .dropdown-section p,
   .resource-button {
     text-align: center;
-    margin: 0 auto;
+    width: 90%;              /* Make buttons take up more width on mobile */
+    max-width: 300px;        /* Set max-width to prevent overly wide buttons */
+    margin: 0.5em auto;      /* Center-align buttons */
+    font-size: 0.9rem;       /* Smaller font size for mobile */
+    padding: 0.6em 0.8em;
+  }
+
+  /* Center the text within dropdown and add padding to reduce cramping */
+  .dropdown-section p {
+    font-size: 1rem;
+    padding: 0.5em 0.5em;
   }
 
   /* Scroll Button */
