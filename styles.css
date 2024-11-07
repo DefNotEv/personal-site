@@ -7,7 +7,8 @@
 }
 
 body {
-  background-color: #f5f5f5;
+  text-transform: lowercase;
+  background-color: #ffffff;
   color: #b30000;
 }
 
@@ -53,7 +54,6 @@ html {
   border: none;
   border-radius: 5px;
   transition: background-color 0.3s;
-  font-weight: bold;
 }
 
 .scroll-button:hover {
@@ -90,9 +90,9 @@ html {
 /* Container to arrange tiles in a centered, grid layout */
 .tiles-container {
   display: flex;
-  flex-wrap: wrap; /* Allows tiles to wrap to the next row */
-  justify-content: center; /* Centers the tiles horizontally */
-  gap: 1em; /* Space between tiles */
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1em;
   margin-top: 2em;
 }
 
@@ -116,54 +116,44 @@ html {
 .tile:hover {
   transform: scale(1.05);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  background-color: #ffffff;
+  background-color: #f5f5f5;
   color: #800000;
-}
-
-/* Parent container for the dropdown sections */
-.dropdown-container {
-  position: relative; /* Make the parent container relative */
-  width: 100%; /* Full width to take up the space */
-  max-width: 800px; /* Optional: limit max width */
-  margin: 20px auto; /* Center the container horizontally */
 }
 
 /* Dropdown Section Styling */
 .dropdown-section {
-  position: absolute; /* Absolutely position them within the container */
-  top: 0; /* Align them at the top of the container */
-  left: 0; /* Align them to the left */
-  width: 100%; /* Ensure they take up the full width of the parent container */
-  opacity: 0; /* Start with hidden */
-  transform: scaleY(0); /* Collapsed state */
-  transform-origin: top; /* Scale from the top */
+  display: none;
+  opacity: 0;
+  max-height: 0;
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
   background-color: #ffffff;
   color: #333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
-  overflow: hidden; /* Prevent content from overflowing */
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  display: flex; /* Flexbox for content centering */
+  overflow: hidden;
+  padding: 1em;
+  transition: opacity 0.3s ease-in-out, max-height 0.3s ease-in-out;
+  display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  padding: 2em;
-  min-height: 200px; /* Minimum height */
-  z-index: -1; /* Start with a lower z-index, so it doesn't overlay others initially */
 }
 
-/* Show the dropdown when active */
 .dropdown-section.show {
-  display:inline-block;
-  opacity: 1; /* Make visible */
-  transform: scaleY(1); /* Expand to full height */
-  z-index: 1; /* Ensure it's on top when active */
+  opacity: 1;
+  max-height: 1000px;
 }
 
-/* Style for the resource buttons */
+/* Center Content in Dropdown */
+.dropdown-section p {
+  margin-bottom: 1em;
+  text-align: center;
+}
+
 .resource-button {
   display: inline-block;
-  margin-top: 0.5em;
+  margin: 0.5em;
   padding: 0.5em 1em;
   font-size: 1rem;
   font-weight: bold;
@@ -173,57 +163,103 @@ html {
   border-radius: 5px;
   transition: background-color 0.3s;
   text-align: center;
-  text-decoration: none;
 }
 
 .resource-button:hover {
   background-color: #800000;
 }
 
-/* Style the text and buttons inside the dropdowns */
-.dropdown-section p {
-  text-align: center; /* Center-align the paragraph text */
-  font-size: 1.2rem;
-  color: #333;
-}
-
-.dropdown-section a {
-  text-align: center;
-}
-
-/* Add some space between the STEM and Not STEM sections */
-#stem-section {
-  margin-bottom: 10em; /* Adds space below the STEM section */
-}
-
-/* Add space between Not STEM and the bottom of the page */
-#not-stem-section {
-  margin-bottom: 15em; /* Adds space below the Not STEM section */
-}
-
-/* Footer Styling */
+/* Footer */
 .footer {
-  background-color: #b30000; /* Footer background color */
-  padding: 3em 0; /* Padding for the footer */
-  text-align: center; /* Center the content */
-  position: relative; /* Position the footer at the bottom */
+  background-color: #b30000;
+  padding: 2em 0;
+  text-align: center;
+  position: relative;
 }
 
-/* Container for Social Icons */
 .social-icons {
-  display: flex; /* Use flexbox to arrange icons horizontally */
-  justify-content: center; /* Center the icons horizontally */
-  gap: 1.5em; /* Add space between icons */
+  display: flex;
+  justify-content: center;
+  gap: 1.5em;
 }
 
-/* Individual Social Icon */
 .social-icon {
-  font-size: 2rem; /* Icon size */
-  color: #ffffff; /* Icon color */
-  transition: color 0.3s; /* Smooth transition on hover */
+  font-size: 2rem;
+  color: #f5f5f5;
+  transition: color 0.3s;
 }
 
-/* Hover effect for icons */
 .social-icon:hover {
-  color: #f5f5f5; /* Change color when hovered */
+  color: #ffffff;
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+  /* Adjust main title and subheading font sizes */
+  .main-title {
+    font-size: 2rem;
+  }
+
+  .subheading {
+    font-size: 1.2rem;
+  }
+
+  /* Adjust padding in sections for a compact layout */
+  .about-section, .content-section {
+    padding: 2em 1em;
+  }
+
+  /* Adjust h2 font size in sections */
+  .content-section h2 {
+    font-size: 2rem;
+  }
+
+  /* Stack tiles vertically on mobile */
+  .tiles-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+  }
+
+  .tile {
+    width: 90%;
+    max-width: 300px;
+    height: auto;
+    padding: 1em 0;
+    font-size: 1.2rem;
+  }
+
+  /* Full-width dropdown sections on mobile */
+  .dropdown-section {
+    width: 90%;
+    max-width: 100%;
+    padding: 1em;
+  }
+
+  /* Center-align text and buttons in dropdown sections */
+  .dropdown-section p,
+  .resource-button {
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  /* Scroll Button */
+  .scroll-button {
+    padding: 0.6em 1.2em;
+    font-size: 0.9rem;
+    margin-top: 1em;
+  }
+
+  /* Footer */
+  .footer {
+    padding: 1.5em 0;
+  }
+
+  .social-icon {
+    font-size: 1.5rem;
+  }
+
+  .social-icons {
+    gap: 1em;
+  }
 }
