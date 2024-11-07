@@ -1,66 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>evelyn hzs wong</title>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 20px;
-        }
-        header h1 {
-            font-size: 2em;
-        }
-        header h2 {
-            font-size: 1.5em;
-        }
-        ul {
-            list-style-type: disc;
-            padding-left: 20px;
-        }
-        a {
-            color: darkred;
-            text-decoration: bold;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>evelyn hzs wong</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>hi! i'm evelyn hannah z.s. wong.</h1>
-        <h2>you can call me ev though :)</h2>
-    </header>
 
-    <section>
-        <p>i'm a really really really busy person so this website is still under construction.</p>
-        <p>anyway hi, i'm a grade 12 @ unionville hs, and i like to think I'm a pretty ambitious person.</p>
-        <p>here's a few things i do:</p>
-        <ul>
-            <li>organized <a href="https://www.apohacks.com">canada's largest high school hackathon</a></li>
-            <li>been a member of frc for two seasons, now on my third. currently head of biz <a href="https://www.markhamfirebirds.ca">@frc7902</a></li>
-            <li>been a member of my school's robotics team since grade 9. was an exec for 2 years, and currently a mentor. <a href="https://www.uhsrobotics.org">check us out here.</a></li>
-            <li>helping out with <a href="https://hackathonscanada.com/">hackathons canada</a></li>
-            <li>i'm on student council as events director</li>
-            <li>went to <a href="https://www.shad.ca">shad</a> at ubc</li>
-            <li>won state champion govenor's award (first place canada) for <a href="https://realworlddesignchallenge.org/">real world design challenge </a> 2023</li>
-            <li>i have over 1.5k volunteer hours! most of it is at my church, where I do livestream broadcasting and childcare</li>
-            <li>i'm google certified 😎. ok, it really wasn't that impressive, but I have IT certifications from <a href="https://www.coursera.org/professional-certificates/google-it-support">google's program</a></li>
-            <li>part of a few other school clubs over the past few years. doing deca right now. tried to run an a/v club but that didn't work out. I was also on math club, science club, stem club, and a few others i don't even remember anymore.</li>
-            <li>trainer for <a href="https://www.instagram.com/kingfblc/">king fbla</a> in the coding and programming division</li>
-            <li>co-op-ing at <a href="https://www.nationalevent.com/">national event management</a></li>
-            <li>amateur photographer. i'm tryna get into sports photography right now. check my stuff out on my <a href="https://www.instagram.com/ehzsw">instagram</a></li>
-            <li>also love sports!!! wow, i know, a stem kid who touches grass. i do basketball in the fall, snowboarding in the winter (went to provs!), rock climbing in the spring, and softball in the summer. also love to bike, hike, and skate for fun</li>
-            <li>addicted to music (follow me on <a href="https://open.spotify.com/user/tcy0qyugzn3kev2e32t1x0ov0?si=c8752ccbc67e48f2">spotify</a>). i actually write songs and produce them all in my bedroom. i don't release music though. only time I did that was for a competition back in 2021. i wrote a song for the royal ontario musuem. check that exhibit out <a href="https://www.rom.on.ca/en/exhibitions-galleries/exhibitions/mypandemicstory">here</a>.</li>
-            <li>i made all the links red, cause i like red !!!</li>
-        </ul>
-    </section>
+  <!-- Landing Page Section -->
+  <section class="landing-page">
+    <h1 class="main-title">hey! i'm evelyn hannah z.s wong.</h1>
+    <h2 class="subheading">you can call me ev :)</h2>
+    <a href="#about" class="scroll-button">learn more about me</a>
+  </section>
 
-    <section>
-        <p>real talk, the long-term goal is to do engineering or physics in the states!</p>
-        <p>anyway, reach out to me on <a href="https://www.linkedin.com/in/evelynhwong">linkedin</a>, or email me at <a href="mailto:evelynhzswong@gmail.com">evelynhzswong@gmail.com</a>.</p>
+  <!-- About Me Section -->
+  <section id="about" class="about-section">
+  </section>
+
+    <!-- STEM Section -->
+    <section id="stem-section" class="content-section">
+        <h2>stem</h2>
+        <div class="tiles-container">
+        <div class="tile" onclick="toggleDropdown('hackathons')">hackathons</div>
+        <div class="tile" onclick="toggleDropdown('robotics')">robotics</div>
+        <div class="tile" onclick="toggleDropdown('school-clubs')">school clubs</div>
+        <div class="tile" onclick="toggleDropdown('competitions')">comps/certs</div>
+        </div>
+    
+        <!-- Dropdown Container to hold all dropdowns in the same place -->
+        <div class="dropdown-container">
+            <!-- Dropdown Content for STEM Categories -->
+            <div id="hackathons" class="dropdown-section">
+            <p>I went to my first hackathon in 2023. Since then, I've attended six hackathons, and I've had the opportunity to organize Apocalypse and Hack49. I'm also the head of outreach and marketing at Hackathons North America.</p>
+            <a href="https://devpost.com/evelynhzswong/" target="_blank" rel="noopener noreferrer" class="resource-button">my projects</a>
+            <a href="https://hackathonscanada.com/" target="_blank" rel="noopener noreferrer" class="resource-button">hackathons canada</a>
+            <a href="https://apohacks.com/" target="_blank" rel="noopener noreferrer" class="resource-button">apocalypse</a>
+            <a href="https://hack49.com/" target="_blank" rel="noopener noreferrer" class="resource-button">hack49</a>
+            </div>
+        
+            <div id="robotics" class="dropdown-section">
+            <p>Robotics has been my biggest interest for as long as I can remember. I started off coding LEGO Mindstorms, and now I'm building 150-pound robots. I'm currently a mentor for my school's VEX team and the head of business on my FRC team.</p>
+            <a href="https://uhsrobotics.org" target="_blank" rel="noopener noreferrer" class="resource-button">uhs robotics</a>
+            <a href="https://markhamfirebirds.ca" target="_blank" rel="noopener noreferrer" class="resource-button">markham firebirds</a>
+            </div>
+        
+            <div id="school-clubs" class="dropdown-section">
+            <p>Since high school started, I've been a part of a few school clubs in all areas of stem. They're all super cool, so you should check out some of their Instagram accounts:</p>
+            <a href="https://instagram.com/uhsavteam" target="_blank" rel="noopener noreferrer" class="resource-button">a/v club</a>
+            <a href="https://instagram.com/uhschemistryclub" target="_blank" rel="noopener noreferrer" class="resource-button">chem club</a>
+            <a href="https://instagram.com/unionvillescienceclub" target="_blank" rel="noopener noreferrer" class="resource-button">science club</a>
+            </div>
+        
+            <div id="competitions" class="dropdown-section">
+            <p>In 2023, I placed first in Canada for the real-world design challenge as the project manager. I've also won a few certificates of distinction from Waterloo math competitions; I got a Google cert in info-tech and a girls who code cert in data science.</p>
+            <a href="https://realworlddesignchallenge.org" target="_blank" rel="noopener noreferrer" class="resource-button">rwdc</a>
+            <a href="https://cemc.uwaterloo.ca/contests" target="_blank" rel="noopener noreferrer" class="resource-button">waterloo</a>
+            <a href="https://grow.google/certificates/it-support/" target="_blank" rel="noopener noreferrer" class="resource-button">google</a>
+            <a href="https://girlswhocode.com/programs" target="_blank" rel="noopener noreferrer" class="resource-button">girls who code</a>
+            </div>
     </section>
+    
+    <!-- Not STEM Section -->
+    <section id="not-stem-section" class="content-section">
+        <h2>not stem</h2>
+        <div class="tiles-container">
+        <div class="tile" onclick="toggleDropdown('sports')">sports</div>
+        <div class="tile" onclick="toggleDropdown('business')">business</div>
+        <div class="tile" onclick="toggleDropdown('volunteering')">volunteering</div>
+        <div class="tile" onclick="toggleDropdown('misc')">misc</div>
+        </div>
+    
+        <!-- Dropdown Container for the Not STEM Categories -->
+        <div class="dropdown-container">
+            <!-- Dropdown Content for Not STEM Categories -->
+            <div id="sports" class="dropdown-section">
+            <p>I know, crazy to see an engineer who touches grass. I love snowboarding, skating, softball, rock climbing, basketball, and going to the gym. I also cheer for the Raptors, Canucks, Bills, and Blue Jays. Some of the coolest stuff I've done is go to Provs for snowboarding and participate in rep basketball back in elementary school. I'm a Raptors superfan too; my fam has season tickets + 5 articles of signed memorabilia, and I got to stand in front of Siakam during O Canada in 2019.</p>
+            </div>
+
+            <!-- Business Dropdown -->
+            <div id="business" class="dropdown-section">
+            <p>I always despised business. To my dismay, I don't even know how it started, but I slowly joined activities in business without even realizing it. Now I'm in way too deep because I'm a DECA competitor, FBLC trainer, I have a co-op placement at NEM, and I do a lot of freelance marketing.</p>
+            <a href="https://www.instagram.com/kingfblc/" target="_blank" rel="noopener noreferrer" class="resource-button">king fblc</a>
+            <a href="https://www.instagram.com/decaunionville/" target="_blank" rel="noopener noreferrer" class="resource-button">deca uhs</a>
+            <a href="https://nationalevent.com" target="_blank" rel="noopener noreferrer" class="resource-button">nem</a>
+            <a href="mailto:evelynhzswong@gmail.com?subject=Marketing%20Opportunity" class="resource-button">hire me</a>              
+            </div>
+
+            <!-- Volunteering Dropdown -->
+            <div id="volunteering" class="dropdown-section">
+            <p>I've never had a paid job. Instead, I've accumulated over 2000 volunteer hours, with the bulk of it from my church. I do childcare, summer camp management, and livestream/camera operation. I also volunteer around my school whenever I can.</p>
+            <a href="https://hopemarkham.ca" target="_blank" rel="noopener noreferrer" class="resource-button">my church!</a>
+            </div>
+
+            <!-- Miscellaneous Dropdown -->
+            <div id="misc" class="dropdown-section">
+            <p>I've done a lot of other side quests. I write songs with my 3 children, who I love dearly (my guitars). One of my songs even played in the rom. I had a podcast with my friend Winston, who made me make this website. I'm also a Shad UBC alumni and a representative for my student council.</p>
+            <a href="https://www.rom.on.ca/en/exhibitions-galleries/exhibitions/mypandemicstory" target="_blank" rel="noopener noreferrer" class="resource-button">rom exhibit</a>
+            <a href="https://thedriveteam.ca/" target="_blank" rel="noopener noreferrer" class="resource-button">tdt podcast</a>
+            </div>
+        </div>
+    </section>
+  <!-- Footer Section -->
+<footer class="footer">
+    <div class="social-icons">
+      <!-- LinkedIn Icon -->
+      <a href="https://www.linkedin.com/in/evelynhwong" target="_blank" rel="noopener noreferrer" class="social-icon">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <!-- Instagram Icon -->
+      <a href="https://www.instagram.com/ehzsw" target="_blank" rel="noopener noreferrer" class="social-icon">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <!-- Email Icon -->
+      <a href="mailto:evelynhzswong@gmail.com" class="social-icon">
+        <i class="fas fa-envelope"></i>
+      </a>
+    </div>
+  </footer>  
+
+  <!-- Script to toggle dropdowns -->
+  <script>
+    function toggleDropdown(id) {
+    const allSections = document.querySelectorAll('.dropdown-section');
+    
+    // Close all sections first
+    allSections.forEach(section => {
+        if (section !== document.getElementById(id)) {
+        section.classList.remove('show');
+        section.style.opacity = 0;
+        section.style.transform = 'scaleY(0)';
+        }
+    });
+
+    // Toggle the clicked section
+    const section = document.getElementById(id);
+    section.classList.toggle('show');
+    
+    if (section.classList.contains('show')) {
+        section.style.opacity = 1;
+        section.style.transform = 'scaleY(1)';
+    } else {
+        section.style.opacity = 0;
+        section.style.transform = 'scaleY(0)';
+    }
+    }
+  </script>
 </body>
 </html>
