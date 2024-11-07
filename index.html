@@ -12,13 +12,13 @@
   <!-- Landing Page Section -->
   <section class="landing-page">
     <h1 class="main-title">hey! i'm evelyn hannah z.s wong.</h1>
-    <h2 class="subheading">you can call me ev :)</h2>
-    <a href="#about" class="scroll-button">what's up?</a>
+    <h2 class="subheading">you can call me ev though :)</h2>
+    <a id="scrollToAbout" class="scroll-button">what's up?</a>
   </section>
 
   <!-- About Me Section -->
   <section id="about" class="about-section">
-    <h2>i'm a grade 12 student with interests in engineering, business, and community service. learn more about me ⬇</h2>
+    <h2>I'm a grade 12 student with interests in engineering, business, and community service. Learn more about me ⬇</h2>
   </section>
 
     <!-- STEM Section -->
@@ -125,6 +125,10 @@
 
   <!-- Script to toggle dropdowns -->
   <script>
+        document.getElementById("scrollToAbout").addEventListener("click", function(e) {
+        e.preventDefault();
+        document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+    });
     function toggleDropdown(id) {
     const allSections = document.querySelectorAll('.dropdown-section');
     
