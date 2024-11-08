@@ -46,6 +46,7 @@ html {
   width: 60px; /* Set a fixed width */
   height: 60px; /* Set a fixed height, same as width */
   font-size: 24px; /* Adjust font size for the icon */
+  border-color: #4c0000;
   display: flex;
   align-items: center;
   justify-content: center;
