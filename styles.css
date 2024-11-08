@@ -194,31 +194,36 @@ html {
 /* Parent container for dropdown sections */
 .dropdown-container {
   position: relative;
-  width: 100%;
-  max-width: 800px; 
-  margin: 20px auto;
+  width: 100%; 
+  margin: 2em auto;  /* Center it horizontally and add margin at the top */
+  display: flex;
+  justify-content: center;
+  margin-bottom: 25em;
 }
 
 /* Individual dropdown section styling */
 .dropdown-section {
   position: absolute;
-  width: 500%;
-  max-width: 600px; 
+  width: 100%;  /* Make it 100% width of the parent container */
+  left: 14%;
+  max-width: 1090px;
   padding: 20px;
-  transform: scaleY(0); 
-  transform-origin: top; 
+  transform: scaleY(0);
+  transform-origin: top;
   background-color: #ffffff;
   color: #333;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
   overflow: hidden;
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column; /* This ensures that the buttons align horizontally */
+  gap: 10px; /* Adds some space between buttons */
+  justify-content: center; /* Centers the buttons horizontally within the container */
+  
   opacity: 0;
-  min-height: 200px;
+  min-height: 200px;  /* Ensure the dropdown section has enough height */
   z-index: -1;
 }
 
@@ -228,12 +233,15 @@ html {
   opacity: 1;
   transform: scaleY(1);
   z-index: 1;
+  display: flex;
+  justify-content: center; /* Vertically center the content */
 }
 
-/* Resource button inside dropdown */
+/* Adjust the resource button to be flexible and fit its content */
 .resource-button {
-  display: inline-block;
-  margin-top: 0.5em;
+  display: inline-flex;  /* Makes the button behave like an inline element but still be flexible */
+  justify-content: center; /* Ensures buttons are horizontally centered */
+  align-items: center; /* Vertically center the content inside the button */
   padding: 0.5em 1em;
   font-size: 1rem;
   font-weight: bold;
@@ -244,6 +252,7 @@ html {
   transition: background-color 0.3s;
   text-align: center;
   text-decoration: none;
+  width: auto; /* Ensures the button only takes as much width as needed */
 }
 
 /* Hover effect for resource buttons */
@@ -253,23 +262,23 @@ html {
 
 /* Style for the paragraph text inside dropdown sections */
 .dropdown-section p {
+  display: flex;
+  flex-direction: row; /* Align buttons side by side */
+  gap: 10px; /* Adds space between buttons */
+  justify-content: center; /* Centers the buttons horizontally */
   text-align: center;
   font-size: 1.2rem;
+  justify-content: center; /* Horizontally center the button content */
   color: #333;
 }
 
-/* Links inside dropdown sections */
+/* Resource buttons inside dropdown sections */
 .dropdown-section a {
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* Horizontally center the content */
   text-align: center;
-}
-
-/* Add space between sections */
-#stem-section {
-  margin-bottom: 10em;
-}
-
-#not-stem-section {
-  margin-bottom: 15em;
+  justify-content: center; /* Horizontally center the button content */
 }
 
 /* ================================
@@ -327,14 +336,20 @@ html {
 
   /* Stack content vertically on smaller screens */
   .content-container {
-    flex-direction: column;
-    gap: 1em;
+    flex-direction: row;  /* Ensure content is side by side on mobile */
+    gap: 1em;  /* Adds spacing between sections */
+    justify-content: space-between;  /* Align sections evenly */
+    flex-wrap: wrap;  /* Allow sections to wrap if necessary */
+    align-items: flex-start;  /* Align all sections to the top (remove vertical alignment issues) */
   }
 
+  /* For stem and not stem sections to appear side by side */
   #stem-section, #not-stem-section {
-    width: 100%;
+    width: 40%;  /* Make them take up 48% of the container width */
+    margin-bottom: 1em; /* Ensure some space between them */
   }
 
+  /* Stack content vertically on mobile */
   .about-section, .content-section {
     padding: 2em 1em;
   }
@@ -343,19 +358,23 @@ html {
     font-size: 2rem;
   }
 
+  /* Update tiles container for column layout */
   .tiles-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 1em;
+    display: grid;
+    grid-template-columns: 1fr;  /* Only 1 column for mobile */
+    gap: 1.5em;  /* Adds larger spacing between tiles */
+    justify-items: center; /* Center tiles horizontally */
   }
 
+  /* Make each tile taller */
   .tile {
-    width: 90%;
-    max-width: 300px;
-    height: auto;
-    font-size: 1.2rem;
+    width: 100%; /* Ensure tile takes full width of the grid */
+    max-width: 350px; /* Keep max-width to limit width size */
+    height: 50px; /* Increased height to make tiles taller */
+    font-size: 1.2rem; /* Increase font size for better readability */
   }
 
+  /* Ensure the dropdown container works well on mobile */
   .dropdown-container {
     width: 100%;
     max-width: 800px;
@@ -365,6 +384,7 @@ html {
 /* ================================
   dark mode
 =================================== */
+
 body.dark-mode {
   background-color: #4c0000;
   color: #ffffff;
