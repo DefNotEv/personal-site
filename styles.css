@@ -14,6 +14,7 @@
 body {
   background-color: #f5f5f5;
   color: #b30000;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 /* Remove text decoration for links and inherit color */
@@ -40,6 +41,7 @@ html {
   height: 100vh;
   background-color: #f5f5f5;
   text-align: center;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 /* Floating button on the bottom right of the page */
@@ -388,6 +390,7 @@ html {
 body.dark-mode {
   background-color: #4c0000;
   color: #ffffff;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 /* Header, Footer */
@@ -405,6 +408,7 @@ body.dark-mode .floating-button button {
 /* Change background color for all sections */
 body.dark-mode .landing-page {
   background-color: #4c0000; 
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 /* Text */
@@ -416,12 +420,15 @@ body.dark-mode .about-section h2,
 body.dark-mode .footer,
 body.dark-mode .dropdown-section p {
   color: #ffffff;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 body.dark-mode .about-section,
 body.dark-mode .content-section {
   background-color: #4c0000; 
   color: #ffffff; 
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+
 }
 
 /* Adjust tile backgrounds */
@@ -430,6 +437,7 @@ body.dark-mode .footer,
 body.dark-mode .scroll-button {
   background-color: #680101;
   color: #ffffff; 
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 body.dark-mode .resource-button {
@@ -439,26 +447,32 @@ body.dark-mode .resource-button {
 
 body.dark-mode .dropdown-section {
   background-color: #680101;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 body.dark-mode .resource-button:hover {
   background-color: #721717;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 /* Social Icons in Dark Mode */
 body.dark-mode .social-icon {
   color: #ffffff; 
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 body.dark-mode .social-icon:hover {
   color: #f5f5f5; 
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 body.dark-mode .scroll-button {
   background-color: #ffffff;
   color: #4c0000;
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
 
 body.dark-mode .scroll-button:hover {
   background-color: #c6bfbf; 
+  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
 }
