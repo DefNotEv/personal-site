@@ -374,7 +374,7 @@ html {
   }
 
   .content-section h2 {
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 
   /* Update tiles container for column layout */
@@ -390,7 +390,7 @@ html {
     width: 100%; /* Ensure tile takes full width of the grid */
     max-width: 400px; /* Keep max-width to limit width size */
     height: 50px; /* Increased height to make tiles taller */
-    font-size: 0.8rem; /* Increase font size for better readability */
+    font-size: 1rem; /* Increase font size for better readability */
     padding: 7px;
   }
 
