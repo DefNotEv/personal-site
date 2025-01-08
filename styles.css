@@ -349,7 +349,7 @@ html {
   /* Stack content vertically on smaller screens */
   .content-container {
     flex-direction: row;  /* Ensure content is side by side on mobile */
-    gap: 1em;  /* Adds spacing between sections */
+    gap: 0.3em;  /* Adds spacing between sections */
     justify-content: space-between;  /* Align sections evenly */
     flex-wrap: wrap;  /* Allow sections to wrap if necessary */
     align-items: flex-start;  /* Align all sections to the top (remove vertical alignment issues) */
@@ -362,15 +362,11 @@ html {
     justify-content: flex-start; /* Ensure alignment starts at the top */
     align-items: center; /* Center content horizontally */
     height: auto; /* Let the content dictate height */
-  }
-  
-  @media (max-width: 768px) {
-    #stem-section, #not-stem-section {
-      width: 48%; /* Equal width for both sections */
-      margin: 0; /* Remove unnecessary margins */
-      box-sizing: border-box; /* Ensure consistent sizing */
+    width: 45%; /* Equal width for both sections */
+    margin: 0; /* Remove unnecessary margins */
+    box-sizing: border-box; /* Ensure consistent sizing */
+    font-size: 1rem;
     }
-  }  
 
   /* Stack content vertically on mobile */
   .about-section, .content-section {
@@ -378,7 +374,7 @@ html {
   }
 
   .content-section h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 
   /* Update tiles container for column layout */
@@ -392,9 +388,9 @@ html {
   /* Make each tile taller */
   .tile {
     width: 100%; /* Ensure tile takes full width of the grid */
-    max-width: 350px; /* Keep max-width to limit width size */
+    max-width: 400px; /* Keep max-width to limit width size */
     height: 50px; /* Increased height to make tiles taller */
-    font-size: 1.2rem; /* Increase font size for better readability */
+    font-size: 0.8rem; /* Increase font size for better readability */
   }
 
   /* Ensure the dropdown container works well on mobile */
@@ -402,7 +398,7 @@ html {
     width: 100%;
     max-width: 370px;
   }
-  @media (max-width: 768px) {
+ 
   .dropdown-container {
     width: 100%; /* Ensure dropdown stretches to full width */
   }
@@ -412,7 +408,6 @@ html {
     margin: 0 auto; /* Center dropdown sections */
     text-align: center; /* Center content within */
   }
-}
 }
 
 /* ================================
