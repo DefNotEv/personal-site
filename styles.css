@@ -358,7 +358,7 @@ html {
   /* For stem and not stem sections to appear side by side */
   #stem-section, #not-stem-section {
     display: flex;
-    flex-direction: column; /* Align tiles vertically */
+    flex-direction: row; /* Align tiles vertically */
     justify-content: flex-start; /* Ensure alignment starts at the top */
     align-items: center; /* Center content horizontally */
     height: auto; /* Let the content dictate height */
@@ -405,7 +405,6 @@ html {
   @media (max-width: 768px) {
   .dropdown-container {
     width: 100%; /* Ensure dropdown stretches to full width */
-    padding: 1em; /* Add padding for better spacing */
   }
 
   .dropdown-section {
