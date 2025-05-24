@@ -1,515 +1,1976 @@
-/* ================================
-  styles.css
-=================================== */
-
-/* Reset margins, padding, and box-sizing for all elements */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
 }
 
-/* Set background color and text color for the body */
+@font-face {
+    font-family: 'Acropolis';
+    src: url('fonts/acropolis-htf.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
 body {
-  background-color: #f5f5f5;
-  color: #b30000;
-  transition: background-color 0.5s ease, color 0.5s ease; 
-}
-
-/* Remove text decoration for links and inherit color */
-a {
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Enable smooth scrolling for the whole document */
-html {
-  scroll-behavior: smooth;
-}
-
-/* ================================
-   Landing Page Styling
-=================================== */
-
-/* Style the landing page container */
-.landing-page {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  background-color: #f5f5f5;
-  text-align: center;
-  transition: background-color 0.5s ease, color 0.5s ease; 
-}
-
-/* Floating button on the bottom right of the page */
-.floating-button {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 1000;
-}
-
-/* Floating button appearance and behavior */
-.floating-button button {
-  background-color: #b30000;
-  border-radius: 50%;  
-  width: 60px;         
-  height: 60px;        
-  font-size: 24px;
-  border-color: #000000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Hover effect for the floating button */
-.floating-button button:hover {
-  background-color: #680101;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Title style on the landing page */
-.main-title {
-  font-size: 3rem;
-  font-weight: bold;
-  color: #b30000;
-}
-
-/* Subheading style */
-.subheading {
-  font-size: 1.5rem;
-  color: #cc0000;
-  margin-top: 0.5em;
-}
-
-/* Scroll button styling */
-.scroll-button {
-  margin-top: 1.5em;
-  padding: 0.8em 1.5em;
-  font-size: 1rem;
-  color: white;
-  background-color: #b30000;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  font-weight: bold;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Hover effect for scroll button */
-.scroll-button:hover {
-  background-color: #800000;
-  color: #ffffff;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* ================================
-   About Section Styling
-=================================== */
-
-/* About section general styling */
-.about-section {
-  padding: 3em;
-  background-color: #f5f5f5;
-  text-align: center;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Heading for the About section */
-.about-section h2 {
-  font-size: 2rem;
-  margin-bottom: 1.5em;
-  color: #b30000;
-}
-
-/* ================================
-   Content Section Styling
-=================================== */
-
-/* Container for content in the about section */
-.content-container {
-  display: flex;          
-  justify-content: space-between;
-  gap: 20px;                
-  padding: 0 40px;
-  max-width: 1200px;
-  margin: 0 auto; 
-  flex-wrap: wrap;     
-}
-
-/* Individual section in content container */
-#stem-section, #not-stem-section {
-  width: 45%;
-  padding: 1em;
-  box-sizing: border-box;
-}
-
-/* General content section styling */
-.content-section {
-  padding: 4em;
-  text-align: center;
-  background-color: #f5f5f5;
-  color: #b30000;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Heading for content section */
-.content-section h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5em;
-}
-
-/* Container for tiles with a grid layout */
-.tiles-container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); 
-  gap: 10px;
-}
-
-/* Individual tile styling */
-.tile {
-  width: 100%;
-  height: 150px;
-  font-size: 1.5rem;
-  background-color: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  color: #b30000;
-  font-weight: bold;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Hover effect for tiles */
-.tile:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  background-color: #ffffff;
-  color: #800000;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* ================================
-   Dropdown Section Styling
-=================================== */
-
-/* Parent container for dropdown sections */
-.dropdown-container {
-  position: relative;
-  width: 100%; 
-  margin: 2em auto;  /* Center it horizontally and add margin at the top */
-  display: flex;
-  justify-content: center;
-  margin-bottom: 25em;
-}
-
-/* Individual dropdown section styling */
-.dropdown-section {
-  position: absolute;
-  width: 100%;  /* Make it 100% width of the parent container */
-  left: 14%;
-  max-width: 1090px;
-  padding: 20px;
-  transform: scaleY(0);
-  transform-origin: top;
-  background-color: #ffffff;
-  color: #333;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  
-  display: flex;
-  flex-direction: column; /* This ensures that the buttons align horizontally */
-  gap: 10px; /* Adds some space between buttons */
-  justify-content: center; /* Centers the buttons horizontally within the container */
-  
-  opacity: 0;
-  min-height: 200px;  /* Ensure the dropdown section has enough height */
-  z-index: -1;
-}
-
-/* Show dropdown when active */
-.dropdown-section.show {
-  display: block;
-  opacity: 1;
-  transform: scaleY(1);
-  z-index: 1;
-  display: flex;
-  justify-content: center; /* Vertically center the content */
-}
-
-/* Adjust the resource button to be flexible and fit its content */
-.resource-button {
-  display: inline-flex;  /* Makes the button behave like an inline element but still be flexible */
-  justify-content: center; /* Ensures buttons are horizontally centered */
-  align-items: center; /* Vertically center the content inside the button */
-  padding: 0.5em 1em;
-  font-size: 1rem;
-  font-weight: bold;
-  color: white;
-  background-color: #b30000;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s;
-  text-align: center;
-  text-decoration: none;
-  width: auto; /* Ensures the button only takes as much width as needed */
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Hover effect for resource buttons */
-.resource-button:hover {
-  background-color: #800000;
-}
-
-/* Style for the paragraph text inside dropdown sections */
-.dropdown-section p {
-  display: flex;
-  flex-direction: row; /* Align buttons side by side */
-  gap: 10px; /* Adds space between buttons */
-  justify-content: center; /* Centers the buttons horizontally */
-  text-align: center;
-  font-size: 1.2rem;
-  justify-content: center; /* Horizontally center the button content */
-  color: #333;
-}
-
-/* Resource buttons inside dropdown sections */
-.dropdown-section a {
-  display: flex;
-  flex-direction: row;
-  align-items: center; /* Horizontally center the content */
-  text-align: center;
-  justify-content: center; /* Horizontally center the button content */
-}
-
-/* ================================
-   Footer Styling
-=================================== */
-
-/* Footer container styling */
-.footer {
-  background-color: #b30000;
-  padding: 3em 0;
-  text-align: center;
-  position: relative;
-  transition: background-color 0.5s ease, color 0.5s ease;
-}
-
-/* Social icons container in the footer */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 1.5em;
-}
-
-/* Individual social icon styling */
-.social-icon {
-  font-size: 2rem;
-  color: #ffffff;
-  transition: color 0.3s;
-}
-
-/* Hover effect for social icons */
-.social-icon:hover {
-  color: #f5f5f5;
-}
-
-/* Copyright text styling */
-.copyright {
-  font-size: 1rem;
-  color: #ffffff;
-  text-align: center;
-  margin-top: 1.5em;
-}
-
-/* ================================
-   Responsive Styling
-=================================== */
-
-/* Mobile view adjustments */
-@media (max-width: 768px) {
-  .main-title {
-    font-size: 2rem;
-  }
-
-  .subheading {
-    font-size: 1.2rem;
-  }
-
-  /* Stack content vertically on smaller screens */
-  .content-container {
-    flex-direction: row;  /* Ensure content is side by side on mobile */
-    gap: 0.3em;  /* Adds spacing between sections */
-    justify-content: space-between;  /* Align sections evenly */
-    flex-wrap: wrap;  /* Allow sections to wrap if necessary */
-    align-items: flex-start;  /* Align all sections to the top (remove vertical alignment issues) */
-  }
-
-  /* For stem and not stem sections to appear side by side */
-  #stem-section, #not-stem-section {
+    background-color: #0653d3;
     display: flex;
-    flex-direction: column; /* Align tiles vertically */
-    justify-content: flex-start; /* Ensure alignment starts at the top */
-    align-items: center; /* Center content horizontally */
-    height: auto; /* Let the content dictate height */
-    width: 48%; /* Equal width for both sections */
-    margin: 0; /* Remove unnecessary margins */
-    box-sizing: border-box; /* Ensure consistent sizing */
-    font-size: 1rem;
-    }
+    flex-direction: column;
+    position: relative;
+    font-family: 'Lilita One', cursive;
+    overflow: hidden;
+}
 
-  /* Stack content vertically on mobile */
-  .about-section, .content-section {
-    padding: 2em 1em;
-  }
-
-  .content-section h2 {
-    font-size: 1.5rem;
-  }
-
-  /* Update tiles container for column layout */
-  .tiles-container {
-    display: grid;
-    grid-template-columns: 1fr;  /* Only 1 column for mobile */
-    gap: 1.5em;  /* Adds larger spacing between tiles */
-    justify-items: center; /* Center tiles horizontally */
-  }
-
-  /* Make each tile taller */
-  .tile {
-    width: 100%; /* Ensure tile takes full width of the grid */
-    max-width: 400px; /* Keep max-width to limit width size */
-    height: 50px; /* Increased height to make tiles taller */
-    font-size: 1rem; /* Increase font size for better readability */
-    padding: 7px;
-  }
-
-  /* Ensure the dropdown container works well on mobile */
-  .dropdown-container {
+#phone-container {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
-    max-width: 370px;
-  }
- 
-  .dropdown-container {
-    width: 100%; /* Ensure dropdown stretches to full width */
-  }
-
-  .dropdown-section {
-    width: 90%; /* Make dropdown sections smaller */
-    margin: 0 auto; /* Center dropdown sections */
-    text-align: center; /* Center content within */
-  }
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10001;
 }
 
-/* ================================
-  dark mode
-=================================== */
-
-body.dark-mode {
-  background-color: #4c0000;
-  color: #ffffff;
-  transition: background-color 0.5s ease, color 0.5s ease;
+#phone-container.fade-to-black {
+    background-color: #000;
+    opacity: 0;
 }
 
-/* Header, Footer */
-body.dark-mode header,
-body.dark-mode footer {
-  background-color: #150303;
-  color:#150303;
-  transition: background-color 0.5s ease, color 0.5s ease;
+.phone-screen {
+    width: 360px;
+    height: 720px;
+    background-image: url('images/phone.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 30px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    border: 5px solid #000;
+    position: relative;
+    padding: 20px;
+    transition: opacity 0.5s ease;
 }
 
-/* Floating Button */
-body.dark-mode .floating-button button {
-  background-color: #ffffff; 
-  transition: background-color 0.5s ease, color 0.5s ease;
+#phone-container.fade-to-black .phone-screen {
+    opacity: 0;
 }
 
-/* Change background color for all sections */
-body.dark-mode .landing-page {
-  background-color: #4c0000; 
-  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+.phone-top-bar {
+    width: 80px;
+    height: 22px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 10px;
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    z-index: 2;
 }
 
-/* Text */
-body.dark-mode .main-title,
-body.dark-mode .subheading,
-body.dark-mode .tile,
-body.dark-mode .content-section h2,
-body.dark-mode .about-section h2,
-body.dark-mode .footer,
-body.dark-mode .dropdown-section p {
-  color: #ffffff;
-  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+.phone-time {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    color: white;
+    font-size: 16px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0;
+    z-index: 3;
 }
 
-body.dark-mode .about-section,
-body.dark-mode .content-section {
-  background-color: #4c0000; 
-  color: #ffffff; 
-  transition: background-color 0.5s ease, color 0.5s ease; 
-
+.status-bar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    gap: 8px;
+    z-index: 3;
 }
 
-body.dark-mode #stem-section,
-body.dark-mode #not-stem-section {
-  background-color: #4c0000;
-  color: #ffffff;         
-  transition: background-color 0.5s ease, color 0.5s ease; 
+.phone-time {
+    position: absolute;
+    top: 30px;
+    left: 50px;
+    color: white;
+    font-size: 16px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 600;
+    letter-spacing: 0;
+    z-index: 1;
 }
 
-/* Adjust tile backgrounds */
-body.dark-mode .tile,
-body.dark-mode .footer,
-body.dark-mode .scroll-button {
-  background-color: #680101;
-  color: #ffffff; 
-  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+.status-bar {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    display: flex;
+    gap: 8px;
+    z-index: 1;
 }
 
-body.dark-mode .resource-button {
-  background-color: #4c0000;
-  color: #ffffff;
+.status-bar div {
+    color: white;
+    font-size: 14px;
 }
 
-body.dark-mode .dropdown-section {
-  background-color: #680101;
-  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+.cellular {
+    display: flex;
+    align-items: center;
 }
 
-body.dark-mode .resource-button:hover {
-  background-color: #721717;
-  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+.wifi {
+    display: flex;
+    align-items: center;
 }
 
-/* Social Icons in Dark Mode */
-body.dark-mode .social-icon {
-  color: #ffffff; 
-  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+.battery {
+    display: flex;
+    align-items: center;
 }
 
-body.dark-mode .social-icon:hover {
-  color: #f5f5f5; 
-  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+.phone-app-container {
+    position: absolute;
+    top: 80px;
+    left: 20px;
+    right: 20px;
+    bottom: 120px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    gap: 10px;
+    padding: 10px;
 }
 
-body.dark-mode .scroll-button {
-  background-color: #ffffff;
-  color: #4c0000;
-  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+.phone-app {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 8px;
+    cursor: pointer;
+    margin: auto;
 }
 
-body.dark-mode .scroll-button:hover {
-  background-color: #c6bfbf; 
-  transition: background-color 0.5s ease, color 0.5s ease; /* Smooth transition for background and text color */
+#click-prompt {
+    background-color: rgba(255, 165, 0, 0.8); /* Orange color */
+}
+
+.phone-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 30px 30px 0 0;
+}
+
+.phone-screen::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+    border-radius: 0 0 30px 30px;
+}
+
+.phone-app {
+    width: 80px;
+    height: 80px;
+    background-color: #000;
+    border-radius: 16px;
+    cursor: pointer;
+    position: relative;
+}
+
+.app-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+.app-label {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    text-shadow: none;
+    white-space: nowrap;
+    max-width: 80px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Loading Screen Styles */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10003;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+}
+
+#loading-screen.fade-in {
+    opacity: 1;
+    visibility: visible;
+}
+
+.loading-text {
+    display: flex;
+    justify-content: center;
+}
+
+.text-box {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1px;
+    padding: 1px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 1px;
+}
+
+.disclaimer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #888;
+    font-size: 10px;
+    font-family: 'Lilita One', cursive;
+    text-align: center;
+    opacity: 0;
+    width: 80%;
+    max-width: 600px;
+    line-height: 1.2;
+    transition: opacity 0.5s ease;
+}
+
+.disclaimer.fade-in {
+    opacity: 0.8;
+}
+
+#loading-screen.fade-out .disclaimer {
+    opacity: 0;
+}
+
+.text-line {
+    color: white;
+    font-family: 'Acropolis', sans-serif;
+    letter-spacing: 2px;
+    line-height: 1;
+    text-shadow: 
+        -1px -1px 0 white,
+        1px -1px 0 white,
+        -1px 1px 0 white,
+        1px 1px 0 white;
+    transition: all 0.5s ease;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.text-line.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+    text-shadow: 
+        -1px -1px 5px rgba(255,255,255,0.5),
+        1px -1px 5px rgba(255,255,255,0.5),
+        -1px 1px 5px rgba(255,255,255,0.5),
+        1px 1px 5px rgba(255,255,255,0.5);
+}
+
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    opacity: 1;
+    transition: opacity 0.5s ease;
+}
+
+.text-line:first-child {
+    font-size: 67px;
+}
+
+.text-line:nth-child(2) {
+    font-size: 62px;
+}
+
+.text-line:last-child {
+    font-size: 61px;
+}
+
+#loading-screen.fade-out {
+    opacity: 0;
+}
+
+.square-wrapper {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    width: 135px;
+    height: 85px;
+}
+
+.square-wrapper.left {
+    position: absolute;
+    left: -10px;
+    top: 5px;
+    width: 140px;
+    height: 85px;
+    cursor: pointer;
+}
+
+.square-wrapper.left .square {
+    cursor: pointer;
+}
+
+.name-text {
+    position: absolute;
+    left: 170px;
+    top: 20px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    z-index: 1000;
+}
+
+.name-text h1 {
+    font-size: 36px;
+    margin: 0;
+    font-weight: 300;
+    text-shadow: 
+        3px 3px 0 #000,
+        -3px -3px 0 #000,
+        3px -3px 0 #000,
+        -3px 3px 0 #000,
+        0px 5px 0px #000;
+    letter-spacing: 2px;
+}
+
+.square-wrapper.small {
+    position: absolute;
+    top: 20px;
+    width: 120px;
+    height: 42.5px;
+}
+
+.social {
+    position: absolute;
+    left: -25px;
+    top: 0;
+    width: 42.5px;
+    height: 42.5px;
+    border-radius: 50%;
+    border: 1px solid #000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: skewX(5deg);
+}
+
+.social-link {
+    text-decoration: none;
+    color: white;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.social i {
+    font-size: 30px;
+    color: #000;
+}
+
+.social i.fa-x {
+    font-size: 24px;
+}
+
+.label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+.social-link:hover .label {
+    transform: translate(-40%, -50%) scale(1.1);
+}
+
+/* Scrollable Content Styles */
+.scrollable-content {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 80px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    z-index: 0;
+}
+
+.scrollable-content::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+}
+
+.content-wrapper {
+    display: flex;
+}
+
+.large-square-wrapper {
+position: relative;
+width: 350px;
+height: 220px;
+perspective: 1000px;
+}
+
+.large-square {
+position: absolute;
+width: 100%;
+height: 100%;
+background: rgba(255, 255, 255, 0.1);
+border: 2px solid #fff;
+transform: rotateX(10deg) rotateY(10deg);
+transform-style: preserve-3d;
+transition: transform 0.3s ease;
+display: flex;
+align-items: center;
+justify-content: center;
+cursor: pointer;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid #fff;
+    transform: rotateX(10deg) rotateY(10deg);
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.large-square:hover {
+    transform: rotateX(10deg) rotateY(10deg) scale(1.05);
+}
+
+.large-social {
+    position: relative;
+    transform: rotateX(-10deg) rotateY(-10deg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.large-social i {
+    font-size: 60px;
+    color: white;
+}
+
+.large-label {
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.square.small {
+    background-color: #000;
+    background: #000;
+    border-radius: 3px;
+    transform: skewX(-5deg);
+    border: none;
+}
+
+.square {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, #33394e 90%, #2a2f3e 90%);
+    border-radius: 8px;
+    transform: skewX(-5deg);
+    border: 4px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5ca);
+}
+
+.home-icon {
+    font-size: 72px;
+    color: #ffffff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    transform: skewX(5deg);
+    font-weight: 900;
+}
+
+
+.circle-image {
+    width: 65px;
+    height: 65px;
+    border-radius: 50%; 
+    background-color: #fff;
+    transform: skewX(5deg);
+}
+
+header {
+    height: 40px;
+    background-color: #000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Parallelogram Section Styles */
+.parallelogram-section {
+    display: flex;
+    justify-content: flex-start;
+    gap: 50px;
+    margin: 130px 0;
+    padding: 20px 20px 20px 100px;
+    overflow-x: auto;
+    overflow-y: visible;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  /* IE and Edge */
+    position: relative;
+    min-height: 650px;
+}
+
+.parallelogram-section::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari and Opera */
+}
+
+.parallelogram {
+    width: 1000px;
+    height: 610px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: skewX(-5deg);
+    border-radius: 5px;
+    overflow: visible;
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.parallelogram:nth-child(1) {
+    width: 800px;
+    background: linear-gradient(135deg, 
+        #8B0000 0%,
+        #B22222 25%,
+        #DC143C 50%,
+        #B22222 75%,
+        #8B0000 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.parallelogram:nth-child(1)::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #f14545;
+    z-index: 1;
+}
+
+.parallelogram-content {
+    transform: skewX(20deg);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.parallelogram .social {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.parallelogram .label {
+    color: white;
+    font-family: 'SF Pro Display', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.parallelogram:nth-child(1) .top-text {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) skewX(5deg);
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 36px;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 2px;
+    z-index: 2;
+    text-transform: uppercase;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 3px 0 #000,
+        0px 4px 0 #000;
+}
+
+.parallelogram:nth-child(1) .bottom-image {
+    position: absolute;
+    bottom: -2px;
+    right: 21%;
+    transform: translateX(50%) skewX(5deg);
+    width: 300px;
+    height: auto;
+}
+
+.parallelogram:nth-child(1) .text-container {
+    position: absolute;
+    top: 110px;
+    left: 30%;
+    right: 20%;
+    transform: translateX(-50%);
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+.parallelogram:nth-child(1) .inside-text {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 22px;
+    text-align: left;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    line-height: 1.5;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.parallelogram:nth-child(1) .first-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram:nth-child(1) .second-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram:nth-child(1) .third-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram:nth-child(1) .fourth-line {
+    margin-top: 0;
+}
+
+/* Footer Styles */
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 10px solid #000;
+}
+
+.nav-items {
+    display: flex;
+    gap: 180px;
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    z-index: 1000;
+}
+
+.nav-item {
+    color: #aab2c0;
+    font-family: 'Lilita One', cursive;
+    font-size: 24px;
+    transition: all 0.3s ease;
+    text-shadow: 2px 2px 4px #000, -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000, -1px -2px 0 #000, 1px -2px 0 #000, -1px 2px 0 #000, 1px 2px 0 #000;
+    letter-spacing: 1px;
+    transform: scale(1);
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+    width: 200px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+}
+
+.nav-item.active {
+    color: #fdc22a;
+    font-size: 32px;
+    text-shadow: 
+        2px 2px 4px #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -2px 0 #000,
+        1px -2px 0 #000,
+        -1px 2px 0 #000,
+        1px 2px 0 #000;
+}
+
+.nav-item:hover {
+    transform: scale(1.25);
+    color: #fdc22a;
+    text-shadow: 
+        2px 2px 4px #000,
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -2px 0 #000,
+        1px -2px 0 #000,
+        -1px 2px 0 #000,
+        1px 2px 0 #000;
+    transform: scale(1);
+    cursor: pointer;
+    position: relative;
+    z-index: 1000;
+}
+
+.phone-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    z-index: 10002;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.phone-overlay.fade-in {
+    opacity: 1;
+}
+
+.parallelogram.project {
+    width: 300px;
+    height: 610px;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: skewX(-5deg);
+    border-radius: 5px;
+    overflow: visible;
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    flex-shrink: 0;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.parallelogram.project#project1 {
+    background: linear-gradient(135deg, 
+        #1a0b2e 0%,
+        #2d1b4e 25%,
+        #3d2b6e 50%,
+        #2d1b4e 75%,
+        #1a0b2e 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project1 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #1a0b2e;
+    z-index: 1;
+}
+
+.parallelogram.project#project1 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #1a0b2e;
+    z-index: 2;
+}
+
+.parallelogram.project#project1 .title-image {
+    width: 220px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
+}
+
+.parallelogram.project#project1 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.parallelogram.project#project1 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallelogram.project#project1 .project-link {
+    display: inline-block;
+    color: #ff69b4;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #00ffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(255, 105, 180, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.parallelogram.project#project1 .project-link:hover {
+    background-color: #ff69b4;
+    color: #1a0b2e;
+    box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
+}
+
+.parallelogram#projects {
+    width: auto;
+    background: none;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    transform: none;
+    overflow: visible;
+    height: auto;
+    min-height: 610px;
+}
+
+.parallelogram#projects .parallelogram.project {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.parallelogram#projects .small-black-parallelogram {
+    position: absolute;
+    top: -60px;
+    left: 105px;
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    transform: skewX(-5deg);
+    z-index: 3;
+}
+
+.parallelogram.project#project1 .image-carousel {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+    perspective: 1000px;
+}
+
+.parallelogram.project#project1 .carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    animation: rotateImages 15s infinite;
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+/* Animation delays for all projects */
+.parallelogram.project#project1 .carousel-image:nth-child(1) { animation-delay: 0s; }
+.parallelogram.project#project1 .carousel-image:nth-child(2) { animation-delay: 2.14s; }
+.parallelogram.project#project1 .carousel-image:nth-child(3) { animation-delay: 4.28s; }
+.parallelogram.project#project1 .carousel-image:nth-child(4) { animation-delay: 6.42s; }
+.parallelogram.project#project1 .carousel-image:nth-child(5) { animation-delay: 8.56s; }
+.parallelogram.project#project1 .carousel-image:nth-child(6) { animation-delay: 10.7s; }
+.parallelogram.project#project1 .carousel-image:nth-child(7) { animation-delay: 12.84s; }
+
+@keyframes rotateImages {
+    0% {
+        opacity: 0;
+        transform: translateX(150px) rotateY(-90deg);
+    }
+    5%, 10% {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+    15% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+}
+
+.parallelogram.project#project1 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #ff69b4;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project1 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #ff69b4;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project2 {
+    background: linear-gradient(135deg, 
+        #000033 0%,
+        #000066 25%,
+        #000099 50%,
+        #000066 75%,
+        #000033 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project2 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #000033;
+    z-index: 1;
+}
+
+.parallelogram.project#project2 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #000033;
+    z-index: 2;
+}
+
+.parallelogram.project#project2 .title-image {
+    width: 220px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.parallelogram.project#project2 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.parallelogram.project#project2 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallelogram.project#project2 .project-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.parallelogram.project#project2 .project-link:hover {
+    background-color: #ffffff;
+    color: #000033;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.parallelogram.project#project2 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project2 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project2 .title-text {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 3px 0 #000,
+        0px 4px 0 #000;
+    transform: skewX(5deg);
+    letter-spacing: 1px;
+}
+
+.parallelogram#about-me-skills {
+    width: 740px;
+    background: linear-gradient(135deg, 
+        rgba(40, 40, 40, 0.3) 0%,
+        rgba(60, 60, 60, 0.3) 25%,
+        rgba(80, 80, 80, 0.3) 50%,
+        rgba(60, 60, 60, 0.3) 75%,
+        rgba(40, 40, 40, 0.3) 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 6px solid rgba(0, 0, 0, 0.3);
+}
+
+.parallelogram#about-me-skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: rgba(42, 36, 76, 0.3);
+    z-index: 1;
+}
+
+.parallelogram#about-me-skills .top-text {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) skewX(5deg);
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 36px;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 2px;
+    z-index: 2;
+    text-transform: uppercase;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 3px 0 #000,
+        0px 4px 0 #000;
+}
+
+.parallelogram#about-me-skills .text-container {
+    position: absolute;
+    top: 110px;
+    left: 30%;
+    right: 20%;
+    transform: translateX(-50%);
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+.parallelogram#about-me-skills .inside-text {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 24px;
+    text-align: left;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    transform: skewX(5deg);
+    line-height: 1.5;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.parallelogram#about-me-skills .first-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram#about-me-skills .second-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram#about-me-skills .third-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram#about-me-skills .bottom-image {
+    position: absolute;
+    bottom: -2px;
+    right: 25%;
+    transform: translateX(50%) skewX(5deg);
+    width: 300px;
+    height: auto;
+}
+
+.parallelogram#about-me-skills .skills-grid {
+    position: absolute;
+    top: 57%;
+    left: 52%;
+    transform: translate(-50%, -50%) skewX(5deg);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    width: 680px;
+    z-index: 2;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(0, 0, 0, 1);
+    border-bottom: 6px solid rgba(0, 0, 0, 1);
+    border-radius: 5px;
+    padding: 15px;
+    height: 180px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: skewX(-5deg);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgb(72, 71, 83);
+    border-top: 3px solid rgba(0, 0, 0, 1);
+    z-index: 1;
+}
+
+.parallelogram#about-me-skills .skill-title {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    z-index: 2;
+}
+
+.parallelogram#about-me-skills .skill-level {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    opacity: 0.8;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    z-index: 2;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(n+4) {
+    margin-left: -23px;
+}
+
+.parallelogram.project#project3 {
+    background: linear-gradient(135deg, 
+        #32CD32 0%,
+        #7CFC00 25%,
+        #90EE90 50%,
+        #7CFC00 75%,
+        #32CD32 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project3 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #32CD32;
+    z-index: 1;
+}
+
+.parallelogram.project#project3 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #32CD32;
+    z-index: 2;
+}
+
+.parallelogram.project#project3 .title-image {
+    width: 220px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.parallelogram.project#project3 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 30px;
+    gap: 15px;
+    z-index: 2;
+}
+
+.parallelogram.project#project3 .title-beaver {
+    width: 50px;
+    height: 50px;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.parallelogram.project#project3 .title-text {
+    color: #000000;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+    text-shadow: 
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+    transform: skewX(5deg);
+    letter-spacing: 1px;
+}
+
+.parallelogram.project#project3 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallelogram.project#project3 .project-link {
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.parallelogram.project#project3 .project-link:hover {
+    background-color: #000000;
+    color: #32CD32;
+    box-shadow: 0 0 20px rgba(50, 205, 50, 0.5);
+}
+
+.parallelogram.project#project3 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #000000;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project3 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #000000;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    text-shadow: 
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project4 {
+    background: linear-gradient(135deg, 
+        #1a1a2e 0%,
+        #2a2a3e 25%,
+        #333344 50%,
+        #2a2a3e 75%,
+        #1a1a2e 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project4 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #1a1a2e;
+    z-index: 1;
+}
+
+.parallelogram.project#project4 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #1a1a2e;
+    z-index: 2;
+}
+
+.parallelogram.project#project4 .title-image {
+    width: 180px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.parallelogram.project#project4 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.parallelogram.project#project4 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallelogram.project#project4 .project-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.parallelogram.project#project4 .project-link:hover {
+    background-color: #ffffff;
+    color: #1a1a2e;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.parallelogram.project#project4 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project4 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project .image-carousel {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+    perspective: 1000px;
+}
+
+.parallelogram.project .carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    animation: rotateImages 15s infinite;
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+/* Animation delays for all projects */
+.parallelogram.project .carousel-image:nth-child(1) { animation-delay: 0s; }
+.parallelogram.project .carousel-image:nth-child(2) { animation-delay: 2.14s; }
+.parallelogram.project .carousel-image:nth-child(3) { animation-delay: 4.28s; }
+.parallelogram.project .carousel-image:nth-child(4) { animation-delay: 6.42s; }
+.parallelogram.project .carousel-image:nth-child(5) { animation-delay: 8.56s; }
+.parallelogram.project .carousel-image:nth-child(6) { animation-delay: 10.7s; }
+.parallelogram.project .carousel-image:nth-child(7) { animation-delay: 12.84s; }
+
+@keyframes rotateImages {
+    0% {
+        opacity: 0;
+        transform: translateX(150px) rotateY(-90deg);
+    }
+    5%, 10% {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+    15% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+}
+
+.parallelogram#contact-me {
+    width: 740px;
+    background: linear-gradient(135deg, 
+        rgba(40, 40, 40, 0.3) 0%,
+        rgba(60, 60, 60, 0.3) 25%,
+        rgba(80, 80, 80, 0.3) 50%,
+        rgba(60, 60, 60, 0.3) 75%,
+        rgba(40, 40, 40, 0.3) 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 6px solid rgba(0, 0, 0, 0.3);
+}
+
+.parallelogram#contact-me::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: rgba(42, 36, 76, 0.3);
+    z-index: 1;
+}
+
+.parallelogram#contact-me .top-text {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) skewX(5deg);
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 36px;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 2px;
+    z-index: 2;
+    text-transform: uppercase;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 3px 0 #000,
+        0px 4px 0 #000;
+}
+
+.parallelogram#contact-me .text-container {
+    position: absolute;
+    top: 110px;
+    left: 30%;
+    right: 20%;
+    transform: translateX(-50%);
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+.parallelogram#contact-me .inside-text {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 24px;
+    text-align: left;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    transform: skewX(5deg);
+    line-height: 1.5;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.parallelogram#contact-me .first-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram#contact-me .second-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram#contact-me .third-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram#contact-me .bottom-image {
+    position: absolute;
+    bottom: -2px;
+    right: 25%;
+    transform: translateX(50%) skewX(5deg);
+    width: 300px;
+    height: auto;
+}
+
+.parallelogram#contact-me .skills-grid {
+    position: absolute;
+    top: 57%;
+    left: 52%;
+    transform: translate(-50%, -50%) skewX(5deg);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    width: 680px;
+    z-index: 2;
+}
+
+.parallelogram#contact-me .skill-parallelogram {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(0, 0, 0, 1);
+    border-bottom: 6px solid rgba(0, 0, 0, 1);
+    border-radius: 5px;
+    padding: 15px;
+    height: 180px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: skewX(-5deg);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.parallelogram#contact-me .skill-parallelogram::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgb(72, 71, 83);
+    border-top: 3px solid rgba(0, 0, 0, 1);
+    z-index: 1;
+}
+
+.parallelogram#contact-me .skill-title {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    z-index: 2;
+}
+
+.parallelogram#contact-me .skill-level {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    opacity: 0.8;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    z-index: 2;
+}
+
+.parallelogram#contact-me .skill-parallelogram:nth-child(n+4) {
+    margin-left: -23px;
+}
+
+.contact-form {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%) skewX(5deg);
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+}
+
+.form-field {
+    position: relative;
+    width: 100%;
+}
+
+.contact-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(0, 0, 0, 0.3);
+    border-bottom: 6px solid rgba(0, 0, 0, 0.3);
+    padding: 15px;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transform: skewX(-5deg);
+    transition: all 0.3s ease;
+}
+
+.contact-input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.contact-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.name-input, .email-input {
+    height: 50px;
+}
+
+.email-input {
+    height: 50px;
+    margin-left: -10px;
+}
+
+.message-input {
+    height: 200px;
+    resize: none;
+    margin-left: -25px;
+}
+
+.button-edge {
+    width: 200px;
+    height: 70px;
+    background: #000;
+    position: absolute;
+    bottom: -33px;
+    right: -44px;
+    clip-path: polygon(0% 10%, 100% 0%, 100% 100%, 10% 100%);
+    transform: skewX(-7deg);
+    z-index: 1;
+}
+
+.send-button {
+    width: 200px;
+    height: 80px;
+    margin: 0;
+    padding: 0 0 0 40px;
+    background: #10dc9c;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transform: skewX(-5deg);
+    position: absolute;
+    bottom: -33px;
+    right: -49px;
+    clip-path: polygon(0% 10%, 100% 0%, 100% 100%, 10% 100%);
+    border: none;
+    box-shadow: 0 0 20px rgba(144, 232, 69, 0.5);
+    text-align: left;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -2px 2px 0 #000,
+        1px 1px 0 #000;
+    z-index: 2;
+    transition: background-color 0.3s ease;
+}
+
+.send-button:hover {
+    background: #7deec9;
 }

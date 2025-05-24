@@ -1,199 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>evelyn hzs wong</title>
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>evelyn hannah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lilita+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-  <!-- Landing Page Section -->
-  <section class="landing-page">
-    <h1 class="main-title">Hey! I'm Evelyn Hannah Z.S. Wong.</h1>
-    <h2 class="subheading">You can call me Ev though :)</h2>
-    <a id="scrollToAbout" class="scroll-button">What's up?</a>
-  </section>
-
-  <!-- About Me Section -->
-  <section id="about" class="about-section">
-    <h2>I'm a grade 12 student with interests in engineering, business, community service, and the color red. Learn more about me ⬇</h2>
-  </section>
-
-  <div class="content-container">
-    <!-- STEM Section -->
-    <section id="stem-section" class="content-section">
-      <h2>STEM</h2>
-      <div class="tiles-container">
-        <div class="tile" onclick="toggleDropdown('hackathons')">hackathons</div>
-        <div class="tile" onclick="toggleDropdown('robotics')">robotics</div>
-        <div class="tile" onclick="toggleDropdown('school-clubs')">school clubs</div>
-        <div class="tile" onclick="toggleDropdown('competitions')">comps/certs</div>
-      </div>
-    </section>
-
-    <!-- Not STEM Section -->
-    <section id="not-stem-section" class="content-section">
-      <h2>Not STEM</h2>
-      <div class="tiles-container">
-        <div class="tile" onclick="toggleDropdown('business')">business</div>
-        <div class="tile" onclick="toggleDropdown('sports')">sports</div>
-        <div class="tile" onclick="toggleDropdown('volunteering')">volunteering</div>
-        <div class="tile" onclick="toggleDropdown('misc')">misc</div>
-      </div>
-    </section>
-  </div>
-  
-  <section class="dropdown-container">
-    <div id="hackathons" class="dropdown-section">
-      <p>I went to my first hackathon in 2023. Since then, I've attended seven hackathons, and I've had the opportunity to organize Apocalypse and Hack49. I'm also the head of outreach and marketing at Hackathons North America.</p>
-      <a href="https://devpost.com/evelynhzswong/" target="_blank" rel="noopener noreferrer" class="resource-button">my projects</a>
-      <a href="https://hackathonscanada.com/" target="_blank" rel="noopener noreferrer" class="resource-button">hackathons canada</a>
-      <a href="https://apohacks.com/" target="_blank" rel="noopener noreferrer" class="resource-button">apocalypse</a>
-      <a href="https://hack49.com/" target="_blank" rel="noopener noreferrer" class="resource-button">hack49</a>
+    <audio id="loading-audio" src="sounds/supercell-intro-sound.mp3" preload="auto"></audio>
+    <audio id="fade-out-audio" src="sounds/brawl-stars-loading-sound.mp3" preload="auto"></audio>
+    <div id="phone-container">
+        <div class="phone-screen">
+            <div class="phone-top-bar"></div>
+            <div class="phone-time">11:55</div>
+            <div class="status-bar">
+                <div class="cellular">
+                    <i class="fas fa-signal"></i>
+                </div>
+                <div class="wifi">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div class="battery">
+                    <i class="fas fa-battery-full"></i>
+                </div>
+            </div>
+            <div class="phone-app-container">
+                <div class="phone-app" id="click-prompt">
+                    <img src="images/app.png" alt="Portfolio App" class="app-image">
+                    <div class="app-label">my portfolio</div>
+                </div>
+            </div>
+        </div>
+        <div class="phone-overlay"></div>
     </div>
-
-    <div id="robotics" class="dropdown-section">
-      <p>Robotics has been my biggest interest for as long as I can remember. I started off coding LEGO Mindstorms, and now I'm building robots as tall as me. I'm currently a mentor for my school's VEX team and the head of business on my FRC team. I'm also a team member on 1165A Altura Robotics!!!</p>
-      <a href="https://www.robotevents.com/teams/V5RC/1165A" target="_blank" rel="noopener noreferrer" class="resource-button">1165 Altura</a>
-      <a href="https://markhamfirebirds.ca" target="_blank" rel="noopener noreferrer" class="resource-button">markham firebirds</a>
-      <a href="https://uhsrobotics.org" target="_blank" rel="noopener noreferrer" class="resource-button">uhs robotics</a>
+    <div id="loading-screen">
+        <div class="loading-text">
+            <div class="text-box">
+                <div class="text-line">EVELYN</div>
+                <div class="text-line">HANNAH</div>
+                <div class="text-line">ZS WONG</div>
+            </div>
+            <div class="disclaimer">This website is a parody of Brawl Stars. This material is not endorsed by Supercell. For more info see Supercell's Fan Content Policy.</div>
+        </div>
     </div>
-
-    <div id="school-clubs" class="dropdown-section">
-      <p>Since high school started, I've been a part of a few school clubs in all areas of stem. They're all super cool, so you should check out some of their Instagram accounts:</p>
-      <a href="https://instagram.com/uhsavteam" target="_blank" rel="noopener noreferrer" class="resource-button">a/v club</a>
-      <a href="https://instagram.com/uhschemistryclub" target="_blank" rel="noopener noreferrer" class="resource-button">chem club</a>
-      <a href="https://instagram.com/unionvillescienceclub" target="_blank" rel="noopener noreferrer" class="resource-button">science club</a>
+    <header></header>
+    <div class="name-text">
+        <h1>EVELYN HANNAH</h1>
     </div>
-
-    <div id="competitions" class="dropdown-section">
-      <p>In 2023, I placed first in Canada for the real-world design challenge as the project manager. I've also won a few certificates of distinction from Waterloo math competitions, I got a Google cert in info-tech, and a girls who code cert in data science.</p>
-      <a href="https://realworlddesignchallenge.org" target="_blank" rel="noopener noreferrer" class="resource-button">rwdc</a>
-      <a href="https://cemc.uwaterloo.ca/contests" target="_blank" rel="noopener noreferrer" class="resource-button">waterloo</a>
-      <a href="https://grow.google/certificates/it-support/" target="_blank" rel="noopener noreferrer" class="resource-button">google</a>
-      <a href="https://girlswhocode.com/programs" target="_blank" rel="noopener noreferrer" class="resource-button">girls who code</a>
+    <div class="square-wrapper left">
+        <div class="square">
+            <i class="fas fa-chevron-left" style="font-size: 60px; color: white; font-weight: 900;"></i>
+        </div>
     </div>
-
-    <div id="business" class="dropdown-section">
-      <p>I always despised business. To my dismay, I don't even know how it started, but I slowly joined activities in business without even realizing it. Now I'm in way too deep because I'm a DECA competitor, FBLC trainer, I have a co-op placement at NEM, and I do a lot of freelance marketing.</p>
-      <a href="https://www.instagram.com/kingfblc/" target="_blank" rel="noopener noreferrer" class="resource-button">king fblc</a>
-      <a href="https://nationalevent.com" target="_blank" rel="noopener noreferrer" class="resource-button">nem</a>
-      <a href="mailto:evelynhzswong@gmail.com?subject=Marketing%20Opportunity" class="resource-button">hire me</a>
+    <div class="square-wrapper">
+        <div class="square">
+            <img src="images/headshot.jpg" alt="Headshot" class="circle-image">
+        </div>
     </div>
-
-    <div id="sports" class="dropdown-section">
-      <p>I know, crazy to see an engineer who touches grass. I love snowboarding, skating, softball, rock climbing, basketball, and going to the gym. I also cheer for the Raptors, Canucks, Bills, and Blue Jays. One of the cool things I've done is go to Provs for snowboarding. I'm a Raptors superfan too; my fam has season tickets + 5 articles of signed memorabilia, and I got to stand in front of Siakam during O Canada in 2019.</p>
+    <div class="square-wrapper small" style="right: 160px;">
+        <div class="square small">
+            <a href="https://github.com/defnotev" target="_blank" class="social-link">
+                <div class="social" style="background-color: #000000;">
+                    <i class="fab fa-github" style="color: white; font-size: 40px;"></i>
+                </div>
+                <div class="label">GitHub</div>
+            </a>
+        </div>
     </div>
-
-    <div id="volunteering" class="dropdown-section">
-      <p>I've never had a paid job. Instead, I've accumulated over 2000 volunteer hours, with the bulk of it from my church. I do childcare, summer camp management, and livestream/camera operation. I also volunteer around my school whenever I can.</p>
-      <a href="https://hopemarkham.ca" target="_blank" rel="noopener noreferrer" class="resource-button">my church!</a>
+    <div class="square-wrapper small" style="right: 320px;">
+        <div class="square small">
+            <a href="https://instagram.com/wong.zs" target="_blank" class="social-link">
+                <div class="social" style="background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);">
+                    <i class="fab fa-instagram" style="color: white;"></i>
+                </div>
+                <div class="label">Insta</div>
+            </a>
+        </div>
     </div>
-
-    <div id="misc" class="dropdown-section">
-      <p>I've done a lot of other side quests. I write songs in my bedroom and (kinda) play 7 instruments. One of my songs even played in the rom. I had a podcast called The Drive Team. I'm also a Shad UBC alumni and a representative for my student council.</p>
-      <a href="https://www.rom.on.ca/en/exhibitions-galleries/exhibitions/mypandemicstory" target="_blank" rel="noopener noreferrer" class="resource-button">rom exhibit</a>
-      <a href="https://thedriveteam.ca/" target="_blank" rel="noopener noreferrer" class="resource-button">tdt podcast</a>
+    <div class="square-wrapper small" style="right: 480px;">
+        <div class="square small">
+            <a href="https://x.com/evelynhannah_" target="_blank" class="social-link">
+                <div class="social" style="background-color: #ffffff;">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </div>
+                <div class="label">X</div>
+            </a>
+        </div>
     </div>
-  </section>
+    <div class="square-wrapper small" style="right: 640px;">
+        <div class="square small">
+            <a href="https://linkedin.com/in/evelynhwong" target="_blank" class="social-link">
+                <div class="social" style="background-color: #0072b1; font-size: 16px;">
+                    <i class="fa-brands fa-linkedin-in" style="color: white; font-size: 24px;"></i>
+                </div>
+                <div class="label">LinkedIn</div>
+            </a>
+        </div>
+    </div>
+    <div class="parallelogram-section">
+        <div class="parallelogram" id="about-me">
+            <div class="top-text">hey, nice to meet you!</div>
+            <div class="text-container">
+                <div class="inside-text">
+                    <div class="first-line">I'm Evelyn Hannah Z.S. Wong — but you can call me Ev! I'm an 18 year old student currently based in Toronto Canada and Indianapolis U.S.A.</div>
+                    <div class="second-line">I love to learn, build, fail, and try again. Whether I'm designing robots or learning to snowboard switch, I'm like a quantum particle: always in motion and doing so many things at once, it feels like I exist in multiple states at the same time. I made this so you can get to know me a little better—hopefully making me less complicated than quantum physics.</div>
+                </div> 
+            </div>
+            <img src="images/ev6.Png" alt="EV6" class="bottom-image">
+        </div>
+        <div class="parallelogram" id="projects">
+            <div class="parallelogram project" id="project1">
+                <div class="top-bar"></div>
+                <div class="project-title">
+                    <img src="images/apotitle.png" alt="Apocalypse" class="title-image">
+                </div>
+                <div class="organizer-text">LEAD ORGANIZER</div>
+                <div class="subtitle-text">canada's largest  hs hackathon!</div>
+                <div class="image-carousel">
+                    <img src="images/apo1.png" alt="Apocalypse 1" class="carousel-image">
+                    <img src="images/apo2.png" alt="Apocalypse 2" class="carousel-image">
+                    <img src="images/apo3.png" alt="Apocalypse 3" class="carousel-image">
+                    <img src="images/apo4.png" alt="Apocalypse 4" class="carousel-image">
+                    <img src="images/apo5.jpg" alt="Apocalypse 5" class="carousel-image">
+                    <img src="images/apo6.png" alt="Apocalypse 6" class="carousel-image">
+                    <img src="images/apo7.png" alt="Apocalypse 7" class="carousel-image">
+                </div>
+                <div class="project-content">
+                    <a href="https://apohacks.com" target="_blank" class="project-link">VIEW WEBSITE</a>
+                </div>
+                <div class="bottom-bar"></div>
+            </div>
+            <div class="parallelogram project" id="project2">
+                <div class="top-bar"></div>
+                <div class="project-title">
+                    <h2 class="title-text">VRC TEAM 1165A</h2>
+                </div>
+                <div class="organizer-text">TEAM MANAGER</div>
+                <div class="subtitle-text">worlds qualifier 2024!</div>
+                <div class="image-carousel">
+                    <img src="images/vrc1.jpg" alt="VRC 1" class="carousel-image">
+                    <img src="images/vrc2.jpg" alt="VRC 2" class="carousel-image">
+                    <img src="images/vrc3.jpg" alt="VRC 3" class="carousel-image">
+                    <img src="images/vrc7.jpg" alt="VRC 4" class="carousel-image">
+                    <img src="images/vrc5.heic" alt="VRC 5" class="carousel-image">
+                    <img src="images/vrc6.jpg" alt="VRC 5" class="carousel-image">
+                    <img src="images/vrc4.jpg" alt="VRC 5" class="carousel-image">
+                </div>
+                <div class="project-content">
+                    <a href="https://www.instagram.com/alturafoundation" target="_blank" class="project-link">VIEW TEAM</a>
+                </div>
+                <div class="bottom-bar"></div>
+            </div>
+            <div class="parallelogram project" id="project3">
+                <div class="top-bar"></div>
+                <div class="bottom-bar"></div>
+                <div class="project-title">
+                    <img src="images/hcbeaver.svg" alt="Hack Canada Beaver" class="title-beaver">
+                    <h2 class="title-text">HACK CANADA</h2>
+                </div>
+                <div class="image-carousel">
+                    <img src="images/hackcanada1.jpg" alt="Hack Canada 1" class="carousel-image">
+                    <img src="images/hackcanada2.jpg" alt="Hack Canada 2" class="carousel-image">
+                    <img src="images/hackcanada3.jpg" alt="Hack Canada 3" class="carousel-image">
+                    <img src="images/hackcanada4.jpg" alt="Hack Canada 4" class="carousel-image">
+                    <img src="images/hackcanada5.jpg" alt="Hack Canada 4" class="carousel-image">
+                    <img src="images/hackcanada6.jpg" alt="Hack Canada 4" class="carousel-image">
+                    <img src="images/hackcanada7.jpg" alt="Hack Canada 4" class="carousel-image">
+                </div>
+                <div class="organizer-text">HEAD OF MARKETING</div>
+                <div class="subtitle-text">one of canada's big hackathons!</div>
+                <div class="project-content">
+                    <a href="https://hackcanada.org" target="_blank" class="project-link">VIEW WEBSITE</a>
+                </div>
+            </div>
+        </div>
+        <div class="parallelogram" id="contact-me">
+            <div class="top-text">CONTACT ME</div>
+            <div class="contact-form">
+                <div class="form-field">
+                    <input type="text" placeholder="NAME" class="contact-input name-input">
+                </div>
+                <div class="form-field">
+                    <input type="email" placeholder="EMAIL" class="contact-input email-input">
+                </div>
+                <div class="form-field">
+                    <textarea placeholder="MESSAGE" class="contact-input message-input" style="text-transform: none;"></textarea>
+                </div>
+                <div class="button-edge"></div>
+                <button class="send-button">SEND MESSAGE</button>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="nav-items">
+            <div class="nav-item" data-section="about-me">ABOUT ME</div>
+            <div class="nav-item" data-section="projects">PROJECTS</div>
+            <div class="nav-item" data-section="contact-me">CONTACT ME</div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="script.js"></script>
 </body>
-
-  <!-- Footer Section -->
-  <footer class="footer">
-    <div class="social-icons">
-      <!-- LinkedIn Icon -->
-      <a href="https://www.linkedin.com/in/evelynhwong" target="_blank" rel="noopener noreferrer" class="social-icon">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <!-- Instagram Icon -->
-      <a href="https://www.instagram.com/ehzsw" target="_blank" rel="noopener noreferrer" class="social-icon">
-        <i class="fab fa-instagram"></i>
-      </a>
-      <!-- YouTube Icon -->
-      <a href="https://youtube.com/@__ev" target="_blank" rel="noopener noreferrer" class="social-icon">
-      <i class="fab fa-youtube"></i>
-      </a>
-      <!-- GitHub Icon -->
-      <a href="https://github.com/DefNotEv" target="_blank" rel="noopener noreferrer" class="social-icon">
-      <i class="fab fa-github"></i>
-      </a>
-      <!-- Spotify Icon -->
-      <a href="https://open.spotify.com/user/tcy0qyugzn3kev2e32t1x0ov0?si=e8acf77dd8ae470f" target="_blank" rel="noopener noreferrer" class="social-icon">
-      <i class="fab fa-spotify"></i>
-      </a>
-      <!-- Email Icon -->
-      <a href="mailto:evelynhzswong@gmail.com" class="social-icon">
-        <i class="fas fa-envelope"></i>
-      </a>
-    </div>
-    <!-- Copyright Notice -->
-    <p class="copyright">&copy; <span id="year"></span> Evelyn Hannah Z.S. Wong. All Rights Reserved.</p>
-  </footer>
-
-  <!-- Floating Button -->
-  <div class="floating-button">
-    <button id="darkModeToggle">🌙</button>
-  </div>
-
-  <!-- Script to toggle dropdowns -->
-  <script>
-    document.getElementById("scrollToAbout").addEventListener("click", function (e) {
-      e.preventDefault();
-      document.getElementById("about").scrollIntoView({ behavior: "smooth" });
-    });
-
-    function toggleDropdown(id) {
-      const allSections = document.querySelectorAll('.dropdown-section');
-
-      // Close all sections first
-      allSections.forEach(section => {
-        if (section !== document.getElementById(id)) {
-          section.classList.remove('show');
-          section.style.opacity = 0;
-          section.style.transform = 'scaleY(0)';
-        }
-      });
-
-      // Toggle the clicked section
-      const section = document.getElementById(id);
-      section.classList.toggle('show');
-
-      if (section.classList.contains('show')) {
-        section.style.opacity = 1;
-        section.style.transform = 'scaleY(1)';
-      } else {
-        section.style.opacity = 0;
-        section.style.transform = 'scaleY(0)';
-      }
-    }
-
-    // Copyright
-    document.getElementById('year').textContent = new Date().getFullYear();
-
-    // Dark Mode
-    const toggleButton = document.getElementById('darkModeToggle');
-
-    // Check for dark mode preference in localStorage
-    if (localStorage.getItem('darkMode') === 'enabled') {
-      document.body.classList.add('dark-mode');
-      toggleButton.textContent = '☀️'; // Change button to sun icon when dark mode is enabled
-    }
-
-    // Toggle dark mode and update the button icon when clicked
-    toggleButton.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-
-      // If dark mode is enabled
-      if (document.body.classList.contains('dark-mode')) {
-        localStorage.setItem('darkMode', 'enabled');
-        toggleButton.textContent = '☀️'; // Change to sun icon
-      } else {
-        localStorage.setItem('darkMode', 'disabled');
-        toggleButton.textContent = '🌙'; // Change to moon icon
-      }
-    });
-  </script>
 </html>
+
