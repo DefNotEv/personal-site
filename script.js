@@ -252,3 +252,95 @@ document.addEventListener('DOMContentLoaded', function() {
             });
     });
 });
+
+// Globe initialization and animation
+function initGlobe() {
+    const container = document.getElementById('globe-container');
+    const canvas = document.getElementById('globe-canvas');
+    
+    // Set up scene
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas: canvas, alpha: true, antialias: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    
+    // Create globe
+    const geometry = new THREE.SphereGeometry(2, 32, 32);
+    const textureLoader = new THREE.TextureLoader();
+    const texture = textureLoader.load('https://raw.githubusercontent.com/mrdoob/three.js/master/examples/textures/planets/earth_atmos_2048.jpg');
+
+    // Create custom shader material
+    const material = new THREE.ShaderMaterial({
+        uniforms: {
+            earthTexture: { value: texture },
+            time: { value: 0 }
+        },
+        vertexShader: `
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            void main() {
+                vUv = uv;
+                vNormal = normalize(normalMatrix * normal);
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+            }
+        `,
+        fragmentShader: `
+            uniform sampler2D earthTexture;
+            uniform float time;
+            varying vec2 vUv;
+            varying vec3 vNormal;
+            
+            void main() {
+                vec4 texColor = texture2D(earthTexture, vUv);
+                float brightness = (texColor.r + texColor.g + texColor.b) / 3.0;
+                
+                if (brightness > 0.25) {
+                    // White land with glow
+                    float glow = 0.5 + 0.5 * sin(time * 2.0);
+                    gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0) + vec4(0.8, 0.8, 0.8, 0.0) * glow;
+                } else {
+                    // Cool-toned dark ocean
+                    gl_FragColor = vec4(0.1, 0.12, 0.15, 1.0);
+                }
+                
+                // Add subtle rim lighting
+                float rim = 1.0 - max(0.0, dot(vNormal, vec3(0.0, 0.0, 1.0)));
+                gl_FragColor.rgb += vec3(0.1, 0.15, 0.2) * pow(rim, 3.0);
+            }
+        `
+    });
+
+    const globe = new THREE.Mesh(geometry, material);
+    // Set initial rotation to show Australia (approximately 120 degrees)
+    globe.rotation.y = Math.PI * 2/3;
+    scene.add(globe);
+    
+    // Add ambient light
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+    
+    // Position camera
+    camera.position.z = 5;
+    
+    // Animation
+    function animate() {
+        requestAnimationFrame(animate);
+        globe.rotation.y += 0.002; // Slowed down from 0.005
+        material.uniforms.time.value += 0.005; // Slowed down from 0.01
+        renderer.render(scene, camera);
+    }
+    
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+    });
+    
+    animate();
+}
+
+// Initialize globe when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    initGlobe();
+});

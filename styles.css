@@ -13,7 +13,7 @@ html, body {
 }
 
 body {
-    background-color: #0653d3;
+    background: radial-gradient(circle at center, #1a75ff, #0653d3);
     display: flex;
     flex-direction: column;
     position: relative;
@@ -39,6 +39,10 @@ body {
     opacity: 0;
 }
 
+#phone-container.fade-to-black .phone-screen {
+    opacity: 0;
+}
+
 .phone-screen {
     width: 360px;
     height: 720px;
@@ -51,10 +55,6 @@ body {
     position: relative;
     padding: 20px;
     transition: opacity 0.5s ease;
-}
-
-#phone-container.fade-to-black .phone-screen {
-    opacity: 0;
 }
 
 .phone-top-bar {
@@ -75,27 +75,6 @@ body {
 
 .phone-time {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    color: white;
-    font-size: 16px;
-    font-family: 'SF Pro Display', sans-serif;
-    font-weight: 600;
-    letter-spacing: 0;
-    z-index: 3;
-}
-
-.status-bar {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 8px;
-    z-index: 3;
-}
-
-.phone-time {
-    position: absolute;
     top: 30px;
     left: 50px;
     color: white;
@@ -104,6 +83,23 @@ body {
     font-weight: 600;
     letter-spacing: 0;
     z-index: 1;
+}
+
+.phone-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0;
+    z-index: 10002;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+}
+
+.phone-overlay.fade-in {
+    opacity: 1;
 }
 
 .status-bar {
@@ -146,15 +142,6 @@ body {
     grid-template-rows: repeat(6, 1fr);
     gap: 10px;
     padding: 10px;
-}
-
-.phone-app {
-    width: 40px;
-    height: 40px;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 8px;
-    cursor: pointer;
-    margin: auto;
 }
 
 #click-prompt {
@@ -218,7 +205,6 @@ body {
     align-items: center;
 }
 
-/* Loading Screen Styles */
 #loading-screen {
     position: fixed;
     top: 0;
@@ -229,10 +215,10 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 10003;
-    opacity: 0;
+    z-index: 9999;
+    opacity: 1;
     visibility: hidden;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.5s ease;
 }
 
 #loading-screen.fade-in {
@@ -302,21 +288,6 @@ body {
         1px -1px 5px rgba(255,255,255,0.5),
         -1px 1px 5px rgba(255,255,255,0.5),
         1px 1px 5px rgba(255,255,255,0.5);
-}
-
-#loading-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-    opacity: 1;
-    transition: opacity 0.5s ease;
 }
 
 .text-line:first-child {
@@ -439,7 +410,6 @@ body {
     transform: translate(-40%, -50%) scale(1.1);
 }
 
-/* Scrollable Content Styles */
 .scrollable-content {
     position: absolute;
     top: 80px;
@@ -574,7 +544,6 @@ header {
     z-index: 0;
 }
 
-/* Parallelogram Section Styles */
 .parallelogram-section {
     display: flex;
     justify-content: flex-start;
@@ -726,19 +695,6 @@ header {
     margin-bottom: 30px;
 }
 
-.parallelogram:nth-child(1) .second-line {
-    margin-bottom: 30px;
-}
-
-.parallelogram:nth-child(1) .third-line {
-    margin-bottom: 30px;
-}
-
-.parallelogram:nth-child(1) .fourth-line {
-    margin-top: 0;
-}
-
-/* Footer Styles */
 footer {
     position: absolute;
     bottom: 0;
@@ -814,21 +770,199 @@ footer {
     z-index: 1000;
 }
 
-.phone-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #000;
-    opacity: 0;
-    z-index: 10002;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
+.parallelogram#about-me-skills {
+    width: 740px;
+    background: linear-gradient(135deg, 
+        rgba(60, 60, 80, 0.4) 0%,
+        rgba(80, 80, 100, 0.4) 25%,
+        rgba(100, 100, 120, 0.4) 50%,
+        rgba(80, 80, 100, 0.4) 75%,
+        rgba(60, 60, 80, 0.4) 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: 3px solid rgba(0, 0, 0, 0.4);
+    border-bottom: 6px solid rgba(0, 0, 0, 0.4);
 }
 
-.phone-overlay.fade-in {
-    opacity: 1;
+.parallelogram#about-me-skills::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: rgba(62, 56, 96, 0.4);
+    z-index: 1;
+}
+
+.parallelogram#about-me-skills .top-text {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%) skewX(5deg);
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 36px;
+    margin: 0;
+    font-weight: 300;
+    letter-spacing: 2px;
+    z-index: 2;
+    text-transform: uppercase;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 3px 0 #000,
+        0px 4px 0 #000;
+}
+
+.parallelogram#about-me-skills .text-container {
+    position: absolute;
+    top: 110px;
+    left: 30%;
+    right: 20%;
+    transform: translateX(-50%);
+    padding: 10px;
+    word-wrap: break-word;
+}
+
+.parallelogram#about-me-skills .inside-text {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 24px;
+    text-align: left;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+    transform: skewX(5deg);
+    line-height: 1.5;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.parallelogram#about-me-skills .first-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram#about-me-skills .second-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram#about-me-skills .third-line {
+    margin-bottom: 30px;
+}
+
+.parallelogram#about-me-skills .bottom-image {
+    position: absolute;
+    bottom: -2px;
+    right: 25%;
+    transform: translateX(50%) skewX(5deg);
+    width: 300px;
+    height: auto;
+}
+
+.parallelogram#about-me-skills .skills-grid {
+    position: absolute;
+    top: 57%;
+    left: 52%;
+    transform: translate(-50%, -50%) skewX(5deg);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px;
+    width: 680px;
+    z-index: 2;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram {
+    background: rgba(255, 255, 255, 0.15);
+    border: 3px solid rgba(0, 0, 0, 0.8);
+    border-bottom: 6px solid rgba(0, 0, 0, 0.8);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    padding: 15px;
+    height: 180px;
+    width: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: skewX(-5deg);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram::after {
+    content: 'Education';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgb(92, 91, 103);
+    border-top: 3px solid rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:hover {
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    transform: skewX(-5deg) scale(1.02);
+}
+
+.parallelogram#about-me-skills .skill-title {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 24px;
+    margin-bottom: 10px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
+    z-index: 2;
+}
+
+.parallelogram#about-me-skills .skill-level {
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    opacity: 0.9;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
+    z-index: 2;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(n+4) {
+    margin-left: -23px;
 }
 
 .parallelogram.project {
@@ -935,90 +1069,6 @@ footer {
     box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
 }
 
-.parallelogram#projects {
-    width: auto;
-    background: none;
-    border: none;
-    box-shadow: none;
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    transform: none;
-    overflow: visible;
-    height: auto;
-    min-height: 610px;
-}
-
-.parallelogram#projects .parallelogram.project {
-    margin-bottom: 0;
-    flex-shrink: 0;
-}
-
-.parallelogram#projects .small-black-parallelogram {
-    position: absolute;
-    top: -60px;
-    left: 105px;
-    width: 60px;
-    height: 60px;
-    background-color: #000;
-    transform: skewX(-5deg);
-    z-index: 3;
-}
-
-.parallelogram.project#project1 .image-carousel {
-    position: absolute;
-    top: 57%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 230px;
-    height: 330px;
-    z-index: 0;
-    perspective: 1000px;
-}
-
-.parallelogram.project#project1 .carousel-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
-    animation: rotateImages 15s infinite;
-    transform-origin: center center;
-    backface-visibility: hidden;
-}
-
-/* Animation delays for all projects */
-.parallelogram.project#project1 .carousel-image:nth-child(1) { animation-delay: 0s; }
-.parallelogram.project#project1 .carousel-image:nth-child(2) { animation-delay: 2.14s; }
-.parallelogram.project#project1 .carousel-image:nth-child(3) { animation-delay: 4.28s; }
-.parallelogram.project#project1 .carousel-image:nth-child(4) { animation-delay: 6.42s; }
-.parallelogram.project#project1 .carousel-image:nth-child(5) { animation-delay: 8.56s; }
-.parallelogram.project#project1 .carousel-image:nth-child(6) { animation-delay: 10.7s; }
-.parallelogram.project#project1 .carousel-image:nth-child(7) { animation-delay: 12.84s; }
-
-@keyframes rotateImages {
-    0% {
-        opacity: 0;
-        transform: translateX(150px) rotateY(-90deg);
-    }
-    5%, 10% {
-        opacity: 1;
-        transform: translateX(0) rotateY(0deg);
-    }
-    15% {
-        opacity: 0;
-        transform: translateX(-150px) rotateY(90deg);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(-150px) rotateY(90deg);
-    }
-}
-
 .parallelogram.project#project1 .organizer-text {
     position: absolute;
     top: 100px;
@@ -1026,11 +1076,6 @@ footer {
     color: #ff69b4;
     font-family: 'Lilita One', cursive;
     font-size: 20px;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
     transform: skewX(5deg);
     z-index: 2;
     text-align: right;
@@ -1044,18 +1089,13 @@ footer {
     color: #ff69b4;
     font-family: 'Lilita One', cursive;
     font-size: 16px;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
     transform: skewX(5deg);
     z-index: 2;
     text-align: right;
     white-space: nowrap;
 }
 
-.parallelogram.project#project2 {
+.parallelogram.project#project4 {
     background: linear-gradient(135deg, 
         #000033 0%,
         #000066 25%,
@@ -1070,480 +1110,13 @@ footer {
     overflow: hidden;
 }
 
-.parallelogram.project#project2 .top-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background-color: #000033;
-    z-index: 1;
-}
-
-.parallelogram.project#project2 .bottom-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background-color: #000033;
-    z-index: 2;
-}
-
-.parallelogram.project#project2 .title-image {
-    width: 220px;
-    height: auto;
-    transform: skewX(5deg);
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-}
-
-.parallelogram.project#project2 .project-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-}
-
-.parallelogram.project#project2 .project-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    text-align: center;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.parallelogram.project#project2 .project-link {
-    display: inline-block;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    border: 2px solid #ffffff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
-    transform: skewX(5deg);
-    margin: 0;
-    position: relative;
-    z-index: 10;
-}
-
-.parallelogram.project#project2 .project-link:hover {
-    background-color: #ffffff;
-    color: #000033;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-.parallelogram.project#project2 .organizer-text {
-    position: absolute;
-    top: 100px;
-    right: 30px;
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 20px;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
-    transform: skewX(5deg);
-    z-index: 2;
-    text-align: right;
-    white-space: nowrap;
-}
-
-.parallelogram.project#project2 .subtitle-text {
-    position: absolute;
-    top: 130px;
-    right: 30px;
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 16px;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
-    transform: skewX(5deg);
-    z-index: 2;
-    text-align: right;
-    white-space: nowrap;
-}
-
-.parallelogram.project#project2 .title-text {
-    color: #ffffff;
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 600;
-    margin: 0;
-    text-shadow: 
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000,
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        0px 3px 0 #000,
-        0px 4px 0 #000;
-    transform: skewX(5deg);
-    letter-spacing: 1px;
-}
-
-.parallelogram#about-me-skills {
-    width: 740px;
-    background: linear-gradient(135deg, 
-        rgba(40, 40, 40, 0.3) 0%,
-        rgba(60, 60, 60, 0.3) 25%,
-        rgba(80, 80, 80, 0.3) 50%,
-        rgba(60, 60, 60, 0.3) 75%,
-        rgba(40, 40, 40, 0.3) 100%
-    );
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border: 3px solid rgba(0, 0, 0, 0.3);
-    border-bottom: 6px solid rgba(0, 0, 0, 0.3);
-}
-
-.parallelogram#about-me-skills::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background-color: rgba(42, 36, 76, 0.3);
-    z-index: 1;
-}
-
-.parallelogram#about-me-skills .top-text {
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    transform: translateX(-50%) skewX(5deg);
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 36px;
-    margin: 0;
-    font-weight: 300;
-    letter-spacing: 2px;
-    z-index: 2;
-    text-transform: uppercase;
-    text-shadow: 
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000,
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        0px 3px 0 #000,
-        0px 4px 0 #000;
-}
-
-.parallelogram#about-me-skills .text-container {
-    position: absolute;
-    top: 110px;
-    left: 30%;
-    right: 20%;
-    transform: translateX(-50%);
-    padding: 10px;
-    word-wrap: break-word;
-}
-
-.parallelogram#about-me-skills .inside-text {
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 24px;
-    text-align: left;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
-    transform: skewX(5deg);
-    line-height: 1.5;
-    white-space: normal;
-    word-break: break-word;
-}
-
-.parallelogram#about-me-skills .first-line {
-    margin-bottom: 30px;
-}
-
-.parallelogram#about-me-skills .second-line {
-    margin-bottom: 30px;
-}
-
-.parallelogram#about-me-skills .third-line {
-    margin-bottom: 30px;
-}
-
-.parallelogram#about-me-skills .bottom-image {
-    position: absolute;
-    bottom: -2px;
-    right: 25%;
-    transform: translateX(50%) skewX(5deg);
-    width: 300px;
-    height: auto;
-}
-
-.parallelogram#about-me-skills .skills-grid {
-    position: absolute;
-    top: 57%;
-    left: 52%;
-    transform: translate(-50%, -50%) skewX(5deg);
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    gap: 30px;
-    width: 680px;
-    z-index: 2;
-}
-
-.parallelogram#about-me-skills .skill-parallelogram {
-    background: rgba(255, 255, 255, 0.1);
-    border: 3px solid rgba(0, 0, 0, 1);
-    border-bottom: 6px solid rgba(0, 0, 0, 1);
-    border-radius: 5px;
-    padding: 15px;
-    height: 180px;
-    width: 160px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    transform: skewX(-5deg);
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-    position: relative;
-}
-
-.parallelogram#about-me-skills .skill-parallelogram::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background-color: rgb(72, 71, 83);
-    border-top: 3px solid rgba(0, 0, 0, 1);
-    z-index: 1;
-}
-
-.parallelogram#about-me-skills .skill-title {
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 20px;
-    margin-bottom: 10px;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
-    z-index: 2;
-}
-
-.parallelogram#about-me-skills .skill-level {
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 16px;
-    opacity: 0.8;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
-    z-index: 2;
-}
-
-.parallelogram#about-me-skills .skill-parallelogram:nth-child(n+4) {
-    margin-left: -23px;
-}
-
-.parallelogram.project#project3 {
-    background: linear-gradient(135deg, 
-        #32CD32 0%,
-        #7CFC00 25%,
-        #90EE90 50%,
-        #7CFC00 75%,
-        #32CD32 100%
-    );
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    border: 3px solid #000;
-    border-bottom: 6px solid #000;
-    overflow: hidden;
-}
-
-.parallelogram.project#project3 .top-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background-color: #32CD32;
-    z-index: 1;
-}
-
-.parallelogram.project#project3 .bottom-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background-color: #32CD32;
-    z-index: 2;
-}
-
-.parallelogram.project#project3 .title-image {
-    width: 220px;
-    height: auto;
-    transform: skewX(5deg);
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-}
-
-.parallelogram.project#project3 .project-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: 30px;
-    gap: 15px;
-    z-index: 2;
-}
-
-.parallelogram.project#project3 .title-beaver {
-    width: 50px;
-    height: 50px;
-    transform: skewX(5deg);
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-}
-
-.parallelogram.project#project3 .title-text {
-    color: #000000;
-    font-family: 'Luckiest Guy', cursive;
-    font-size: 28px;
-    font-weight: 400;
-    margin: 0;
-    text-shadow: 
-        -1px -1px 0 #fff,
-        1px -1px 0 #fff,
-        -1px 1px 0 #fff,
-        1px 1px 0 #fff;
-    transform: skewX(5deg);
-    letter-spacing: 1px;
-}
-
-.parallelogram.project#project3 .project-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    text-align: center;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.parallelogram.project#project3 .project-link {
-    display: inline-block;
-    color: #000000;
-    text-decoration: none;
-    font-size: 20px;
-    border: 2px solid #000000;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.2);
-    transform: skewX(5deg);
-    margin: 0;
-    position: relative;
-    z-index: 10;
-}
-
-.parallelogram.project#project3 .project-link:hover {
-    background-color: #000000;
-    color: #32CD32;
-    box-shadow: 0 0 20px rgba(50, 205, 50, 0.5);
-}
-
-.parallelogram.project#project3 .organizer-text {
-    position: absolute;
-    top: 100px;
-    right: 30px;
-    color: #000000;
-    font-family: 'Lilita One', cursive;
-    font-size: 20px;
-    text-shadow: 
-        -1px -1px 0 #fff,
-        1px -1px 0 #fff,
-        -1px 1px 0 #fff,
-        1px 1px 0 #fff;
-    transform: skewX(5deg);
-    z-index: 2;
-    text-align: right;
-    white-space: nowrap;
-}
-
-.parallelogram.project#project3 .subtitle-text {
-    position: absolute;
-    top: 130px;
-    right: 30px;
-    color: #000000;
-    font-family: 'Lilita One', cursive;
-    font-size: 16px;
-    text-shadow: 
-        -1px -1px 0 #fff,
-        1px -1px 0 #fff,
-        -1px 1px 0 #fff,
-        1px 1px 0 #fff;
-    transform: skewX(5deg);
-    z-index: 2;
-    text-align: right;
-    white-space: nowrap;
-}
-
-.parallelogram.project#project4 {
-    background: linear-gradient(135deg, 
-        #1a1a2e 0%,
-        #2a2a3e 25%,
-        #333344 50%,
-        #2a2a3e 75%,
-        #1a1a2e 100%
-    );
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    border: 3px solid #000;
-    border-bottom: 6px solid #000;
-    overflow: hidden;
-}
-
 .parallelogram.project#project4 .top-bar {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     height: 80px;
-    background-color: #1a1a2e;
+    background-color: #000033;
     z-index: 1;
 }
 
@@ -1553,12 +1126,12 @@ footer {
     left: 0;
     right: 0;
     height: 100px;
-    background-color: #1a1a2e;
+    background-color: #000033;
     z-index: 2;
 }
 
 .parallelogram.project#project4 .title-image {
-    width: 180px;
+    width: 220px;
     height: auto;
     transform: skewX(5deg);
     filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
@@ -1607,7 +1180,7 @@ footer {
 
 .parallelogram.project#project4 .project-link:hover {
     background-color: #ffffff;
-    color: #1a1a2e;
+    color: #000033;
     box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
 }
 
@@ -1618,11 +1191,6 @@ footer {
     color: #ffffff;
     font-family: 'Lilita One', cursive;
     font-size: 20px;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
     transform: skewX(5deg);
     z-index: 2;
     text-align: right;
@@ -1636,18 +1204,288 @@ footer {
     color: #ffffff;
     font-family: 'Lilita One', cursive;
     font-size: 16px;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000;
     transform: skewX(5deg);
     z-index: 2;
     text-align: right;
     white-space: nowrap;
 }
 
-.parallelogram.project .image-carousel {
+.parallelogram.project#project4 .title-text {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 3px 0 #000,
+        0px 4px 0 #000;
+    transform: skewX(5deg);
+    letter-spacing: 1px;
+}
+
+.parallelogram.project#project2 {
+    background: linear-gradient(135deg, 
+        #32CD32 0%,
+        #7CFC00 25%,
+        #90EE90 50%,
+        #7CFC00 75%,
+        #32CD32 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project2 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #32CD32;
+    z-index: 1;
+}
+
+.parallelogram.project#project2 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #32CD32;
+    z-index: 2;
+}
+
+.parallelogram.project#project2 .title-image {
+    width: 220px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.parallelogram.project#project2 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 30px;
+    gap: 15px;
+    z-index: 2;
+}
+
+.parallelogram.project#project2 .title-beaver {
+    width: 50px;
+    height: 50px;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.parallelogram.project#project2 .title-text {
+    color: #000000;
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 28px;
+    font-weight: 400;
+    margin: 0;
+    text-shadow: 
+        -1px -1px 0 #fff,
+        1px -1px 0 #fff,
+        -1px 1px 0 #fff,
+        1px 1px 0 #fff;
+    transform: skewX(5deg);
+    letter-spacing: 1px;
+}
+
+.parallelogram.project#project2 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallelogram.project#project2 .project-link {
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.parallelogram.project#project2 .project-link:hover {
+    background-color: #000000;
+    color: #32CD32;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.parallelogram.project#project2 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #000000;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project2 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #000000;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project3 {
+    background: linear-gradient(135deg, 
+        #1a1a2e 0%,
+        #2a2a3e 25%,
+        #333344 50%,
+        #2a2a3e 75%,
+        #1a1a2e 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project3 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #1a1a2e;
+    z-index: 1;
+}
+
+.parallelogram.project#project3 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #1a1a2e;
+    z-index: 2;
+}
+
+.parallelogram.project#project3 .title-image {
+    width: 180px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.parallelogram.project#project3 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.parallelogram.project#project3 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallelogram.project#project3 .project-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.parallelogram.project#project3 .project-link:hover {
+    background-color: #ffffff;
+    color: #1a1a2e;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.parallelogram.project#project3 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project3 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project3 .image-carousel {
     position: absolute;
     top: 57%;
     left: 50%;
@@ -1655,52 +1493,53 @@ footer {
     width: 230px;
     height: 330px;
     z-index: 0;
-    perspective: 1000px;
 }
 
-.parallelogram.project .carousel-image {
+.parallelogram.project#project3 .carousel-image {
+    display: none;
+}
+
+.parallelogram.project#project3 .frc-image {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     object-position: center;
-    opacity: 0;
-    transition: all 0.5s ease-in-out;
-    animation: rotateImages 15s infinite;
-    transform-origin: center center;
-    backface-visibility: hidden;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
-/* Animation delays for all projects */
-.parallelogram.project .carousel-image:nth-child(1) { animation-delay: 0s; }
-.parallelogram.project .carousel-image:nth-child(2) { animation-delay: 2.14s; }
-.parallelogram.project .carousel-image:nth-child(3) { animation-delay: 4.28s; }
-.parallelogram.project .carousel-image:nth-child(4) { animation-delay: 6.42s; }
-.parallelogram.project .carousel-image:nth-child(5) { animation-delay: 8.56s; }
-.parallelogram.project .carousel-image:nth-child(6) { animation-delay: 10.7s; }
-.parallelogram.project .carousel-image:nth-child(7) { animation-delay: 12.84s; }
-
-@keyframes rotateImages {
-    0% {
-        opacity: 0;
-        transform: translateX(150px) rotateY(-90deg);
-    }
-    5%, 10% {
-        opacity: 1;
-        transform: translateX(0) rotateY(0deg);
-    }
-    15% {
-        opacity: 0;
-        transform: translateX(-150px) rotateY(90deg);
-    }
-    100% {
-        opacity: 0;
-        transform: translateX(-150px) rotateY(90deg);
-    }
+.parallelogram#projects {
+    width: auto;
+    background: none;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    transform: none;
+    overflow: visible;
+    height: auto;
+    min-height: 610px;
 }
 
+.parallelogram#projects .parallelogram.project {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.parallelogram#projects .small-black-parallelogram {
+    position: absolute;
+    top: -60px;
+    left: 105px;
+    width: 60px;
+    height: 60px;
+    background-color: #000;
+    transform: skewX(-5deg);
+    z-index: 3;
+}
 .parallelogram#contact-me {
     width: 740px;
     background: linear-gradient(135deg, 
@@ -1832,47 +1671,58 @@ footer {
 }
 
 .parallelogram#contact-me .skill-parallelogram::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
+    content: 'Education';
     background-color: rgb(72, 71, 83);
     border-top: 3px solid rgba(0, 0, 0, 1);
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
 }
 
 .parallelogram#contact-me .skill-title {
     color: #ffffff;
     font-family: 'Lilita One', cursive;
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 10px;
     text-shadow: 
         -1px -1px 0 #000,
         1px -1px 0 #000,
         -1px 1px 0 #000,
-        1px 1px 0 #000;
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
     z-index: 2;
 }
 
 .parallelogram#contact-me .skill-level {
     color: #ffffff;
     font-family: 'Lilita One', cursive;
-    font-size: 16px;
+    font-size: 20px;
     opacity: 0.8;
     text-shadow: 
         -1px -1px 0 #000,
         1px -1px 0 #000,
         -1px 1px 0 #000,
-        1px 1px 0 #000;
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
     z-index: 2;
 }
 
 .parallelogram#contact-me .skill-parallelogram:nth-child(n+4) {
     margin-left: -23px;
 }
-
 .contact-form {
     position: absolute;
     top: 120px;
@@ -1974,3 +1824,853 @@ footer {
 .send-button:hover {
     background: #7deec9;
 }
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(1) {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(0, 0, 0, 1);
+    border-bottom: 6px solid rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(2) {
+    background: rgba(255, 255, 255, 0.1);
+    border: 3px solid rgba(0, 0, 0, 1);
+    border-bottom: 6px solid rgba(0, 0, 0, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(1):hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(2):hover {
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.5);
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(1) .skill-image {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    transform: skewX(5deg);
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: -25px auto 0;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(2) .skill-image {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+    transform: skewX(5deg);
+    position: relative;
+    z-index: 2;
+    display: block;
+    margin: -25px auto 0;
+}
+
+.parallelogram.project#project5 .image-carousel {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+}
+
+.parallelogram.project#project5 .carousel-image {
+    display: none;
+}
+
+.parallelogram.project#project5 .frc-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: skewX(5deg) scale(1);
+    }
+    50% {
+        transform: skewX(5deg) scale(1.05);
+    }
+    100% {
+        transform: skewX(5deg) scale(1);
+    }
+}
+
+/* Project 5 specific styles */
+.parallelogram.project#project5 {
+    background: linear-gradient(135deg, 
+        #00008B 0%,
+        #0000CC 25%,
+        #0000FF 50%,
+        #0000CC 75%,
+        #00008B 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project5 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #FF0000;
+    z-index: 1;
+}
+
+.parallelogram.project#project5 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #FF0000;
+    z-index: 2;
+}
+
+.parallelogram.project#project5 .title-image {
+    width: 180px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 255, 0.5));
+}
+
+.parallelogram.project#project5 .project-title {
+    position: absolute;
+    top: -7;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.parallelogram.project#project5 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallelogram.project#project5 .project-link {
+    display: inline-block;
+    color: #000000;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(0, 0, 0, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.parallelogram.project#project5 .project-link:hover {
+    background-color: #000000;
+    color: #00008B;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.parallelogram.project#project5 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #000000;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project5 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #000000;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project5 .image-carousel {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+}
+
+.parallelogram.project#project5 .carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    animation: rotateImages 24s infinite;
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+/* Animation delays for all projects */
+.parallelogram.project#project5 .carousel-image:nth-child(1) { animation-delay: 0s; }
+.parallelogram.project#project5 .carousel-image:nth-child(2) { animation-delay: 4s; }
+.parallelogram.project#project5 .carousel-image:nth-child(3) { animation-delay: 8s; }
+.parallelogram.project#project5 .carousel-image:nth-child(4) { animation-delay: 12s; }
+.parallelogram.project#project5 .carousel-image:nth-child(5) { animation-delay: 16s; }
+.parallelogram.project#project5 .carousel-image:nth-child(6) { animation-delay: 20s; }
+.parallelogram.project#project5 .carousel-image:nth-child(7) { animation-delay: 24s; }
+
+@keyframes rotateImages {
+    0% {
+        opacity: 0;
+        transform: translateX(150px) rotateY(-90deg);
+    }
+    5%, 10% {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+    15% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+}
+
+/* Project 6 specific styles */
+.parallelogram.project#project6 {
+    background: linear-gradient(135deg, 
+        #039b93 0%,
+        #02b3a9 25%,
+        #01c9bf 50%,
+        #02b3a9 75%,
+        #039b93 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project6 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #ece2e2;
+    z-index: 1;
+}
+
+.parallelogram.project#project6 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #ece2e2;
+    z-index: 2;
+}
+
+.parallelogram.project#project6 .title-text {
+    display: none; /* Hide the text title */
+}
+
+.parallelogram.project#project6 .title-image {
+    width: 220px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.parallelogram.project#project6 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.parallelogram.project#project6 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.parallelogram.project#project6 .project-link {
+    display: inline-block;
+    color: #e83a34;
+    text-decoration: none;
+    font-size: 14px;
+    border: 2px solid #e83a34;
+    padding: 6px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+    white-space: nowrap;
+    width: 140px;
+}
+
+.parallelogram.project#project6 .project-link:hover {
+    background-color: #e83a34;
+    color: #ffffff;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.parallelogram.project#project6 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project6 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project6 .image-carousel {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+}
+
+.parallelogram.project#project6 .carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    animation: rotateImages 24s infinite;
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+/* Animation delays for all projects */
+.parallelogram.project#project6 .carousel-image:nth-child(1) { animation-delay: 0s; }
+.parallelogram.project#project6 .carousel-image:nth-child(2) { animation-delay: 4s; }
+.parallelogram.project#project6 .carousel-image:nth-child(3) { animation-delay: 8s; }
+.parallelogram.project#project6 .carousel-image:nth-child(4) { animation-delay: 12s; }
+.parallelogram.project#project6 .carousel-image:nth-child(5) { animation-delay: 16s; }
+.parallelogram.project#project6 .carousel-image:nth-child(6) { animation-delay: 20s; }
+.parallelogram.project#project6 .carousel-image:nth-child(7) { animation-delay: 24s; }
+
+@keyframes rotateImages {
+    0% {
+        opacity: 0;
+        transform: translateX(150px) rotateY(-90deg);
+    }
+    5%, 10% {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+    15% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+}
+
+/* General carousel styles for all projects */
+.parallelogram.project .image-carousel {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+    perspective: 1000px;
+}
+
+.parallelogram.project .carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    animation: rotateImages 24s infinite;
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+/* Animation delays for all projects */
+.parallelogram.project .carousel-image:nth-child(1) { animation-delay: 0s; }
+.parallelogram.project .carousel-image:nth-child(2) { animation-delay: 4s; }
+.parallelogram.project .carousel-image:nth-child(3) { animation-delay: 8s; }
+.parallelogram.project .carousel-image:nth-child(4) { animation-delay: 12s; }
+.parallelogram.project .carousel-image:nth-child(5) { animation-delay: 16s; }
+.parallelogram.project .carousel-image:nth-child(6) { animation-delay: 20s; }
+.parallelogram.project .carousel-image:nth-child(7) { animation-delay: 24s; }
+
+@keyframes rotateImages {
+    0% {
+        opacity: 0;
+        transform: translateX(150px) rotateY(-90deg);
+    }
+    5%, 10% {
+        opacity: 1;
+        transform: translateX(0) rotateY(0deg);
+    }
+    15% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translateX(-150px) rotateY(90deg);
+    }
+}
+
+/* Project 7 specific styles */
+.parallelogram.project#project7 {
+    background: linear-gradient(135deg, 
+        #faae20 0%,
+        #fbb033 25%,
+        #fcb246 50%,
+        #fbb033 75%,
+        #faae20 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project7 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #e69d1a;
+    z-index: 1;
+}
+
+.parallelogram.project#project7 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #e69d1a;
+    z-index: 2;
+}
+
+.parallelogram.project#project7 .title-image {
+    width: 220px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+.parallelogram.project#project7 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 0 20px;
+}
+
+.parallelogram.project#project7 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallelogram.project#project7 .project-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.parallelogram.project#project7 .project-link:hover {
+    background-color: #ffffff;
+    color: #37393c;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+.parallelogram.project#project7 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project7 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project7 .image-carousel {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+}
+
+.parallelogram.project#project7 .carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    animation: rotateImages 24s infinite;
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+/* Animation delays for project7 */
+.parallelogram.project#project7 .carousel-image:nth-child(1) { animation-delay: 0s; }
+.parallelogram.project#project7 .carousel-image:nth-child(2) { animation-delay: 4s; }
+.parallelogram.project#project7 .carousel-image:nth-child(3) { animation-delay: 8s; }
+.parallelogram.project#project7 .carousel-image:nth-child(4) { animation-delay: 12s; }
+.parallelogram.project#project7 .carousel-image:nth-child(5) { animation-delay: 16s; }
+.parallelogram.project#project7 .carousel-image:nth-child(6) { animation-delay: 20s; }
+.parallelogram.project#project7 .carousel-image:nth-child(7) { animation-delay: 24s; }
+
+.parallelogram.project#project7 .title-text {
+    color: #ffffff;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+    transform: skewX(5deg);
+    letter-spacing: 1px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0 20px;
+}
+
+.parallelogram.project#project7 .title-logo {
+    width: 35px;
+    height: 35px;
+    margin-left: 20px;
+    transform: skewX(5deg);
+}
+
+.parallelogram.project#project7 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 0 20px;
+    gap: 5px;
+}
+
+/* Project 8 specific styles */
+.parallelogram.project#project8 {
+    background: linear-gradient(135deg, 
+        #f3ffbf 0%,
+        #f5ffc8 25%,
+        #f7ffd1 50%,
+        #f5ffc8 75%,
+        #f3ffbf 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
+}
+
+.parallelogram.project#project8 .top-bar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #bff3ff;
+    z-index: 1;
+}
+
+.parallelogram.project#project8 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #bff3ff;
+    z-index: 2;
+}
+
+.parallelogram.project#project8 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    padding: 0 20px;
+    gap: 10px;
+}
+
+.parallelogram.project#project8 .title-text {
+    color: #005e73;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 22px;
+    font-weight: 550;
+    margin: 0;
+    transform: skewX(5deg);
+    letter-spacing: 1px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0 20px;
+}
+
+.parallelogram.project#project8 .title-controller {
+    width: 40px;
+    margin-right: -10px;
+}
+
+.parallelogram.project#project8 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.parallelogram.project#project8 .project-link {
+    display: inline-block;
+    color: #005e73;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #005e73;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(0, 94, 115, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+.parallelogram.project#project8 .project-link:hover {
+    background-color: #005e73;
+    color: #bff3ff;
+    box-shadow: 0 0 20px rgba(0, 94, 115, 0.5);
+}
+
+.parallelogram.project#project8 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #005e73;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project8 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #005e73;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+.parallelogram.project#project8 .image-carousel {
+    position: absolute;
+    top: 57%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+}
+
+.parallelogram.project#project8 .carousel-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    opacity: 0;
+    transition: all 0.5s ease-in-out;
+    animation: rotateImages 24s infinite;
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+/* Animation delays for project8 */
+.parallelogram.project#project8 .carousel-image:nth-child(1) { animation-delay: 0s; }
+.parallelogram.project#project8 .carousel-image:nth-child(2) { animation-delay: 4s; }
+.parallelogram.project#project8 .carousel-image:nth-child(3) { animation-delay: 8s; }
+.parallelogram.project#project8 .carousel-image:nth-child(4) { animation-delay: 12s; }
+.parallelogram.project#project8 .carousel-image:nth-child(5) { animation-delay: 16s; }
+.parallelogram.project#project8 .carousel-image:nth-child(6) { animation-delay: 20s; }
+.parallelogram.project#project8 .carousel-image:nth-child(7) { animation-delay: 24s; }
+
+.parallelogram.project#project8 .spotify-embed {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+}
+
+.parallelogram.project#project8 .spotify-embed iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+
