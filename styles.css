@@ -1,3 +1,4 @@
+/* Basic reset and full-height setup for html and body */
 html, body {
     height: 100%;
     margin: 0;
@@ -5,6 +6,7 @@ html, body {
     overflow: hidden;
 }
 
+/* Custom font declaration for Acropolis font */
 @font-face {
     font-family: 'Acropolis';
     src: url('fonts/acropolis-htf.ttf') format('truetype');
@@ -12,6 +14,18 @@ html, body {
     font-style: normal;
 }
 
+/* Header styling */
+header {
+    height: 40px;
+    background-color: #000;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+}
+
+/* Main body styling with gradient background and flex layout */
 body {
     background: radial-gradient(circle at center, #1a75ff, #0653d3);
     display: flex;
@@ -21,6 +35,46 @@ body {
     overflow: hidden;
 }
 
+/* Mobile-specific body styling with red gradient */
+body.mobile-body {
+    background: radial-gradient(circle at center, #ff3333, #cc0000);
+}
+
+/* Footer container styling */
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 10px solid #000;
+}
+
+/* Enhanced text shadow for mobile view headings */
+.mobile-body .name-text h1 {
+    text-shadow: 
+        3px 3px 0 #000,
+        -3px -3px 0 #000,
+        3px -3px 0 #000,
+        -3px 3px 0 #000,
+        0px 5px 0px #000;
+}
+
+/* Mobile navigation item color */
+.mobile-body .nav-item {
+    color: #ffcccc;
+}
+
+/* Active mobile navigation item color */
+.mobile-body .nav-item.active {
+    color: #ffffff;
+}
+
+/* Phone container overlay for mobile view */
 #phone-container {
     position: fixed;
     top: 0;
@@ -34,15 +88,18 @@ body {
     z-index: 10001;
 }
 
+/* Fade to black animation for phone container */
 #phone-container.fade-to-black {
     background-color: #000;
     opacity: 0;
 }
 
+/* Fade out animation for phone screen */
 #phone-container.fade-to-black .phone-screen {
     opacity: 0;
 }
 
+/* Phone screen styling with background image and border */
 .phone-screen {
     width: 360px;
     height: 720px;
@@ -57,6 +114,7 @@ body {
     transition: opacity 0.5s ease;
 }
 
+/* Top bar styling for phone screen */
 .phone-top-bar {
     width: 80px;
     height: 22px;
@@ -73,6 +131,7 @@ body {
     z-index: 2;
 }
 
+/* Phone time display styling */
 .phone-time {
     position: absolute;
     top: 30px;
@@ -85,6 +144,7 @@ body {
     z-index: 1;
 }
 
+/* Phone overlay for transitions */
 .phone-overlay {
     position: fixed;
     top: 0;
@@ -98,39 +158,12 @@ body {
     pointer-events: none;
 }
 
+/* Fade in animation for phone overlay */
 .phone-overlay.fade-in {
     opacity: 1;
 }
 
-.status-bar {
-    position: absolute;
-    top: 30px;
-    right: 50px;
-    display: flex;
-    gap: 8px;
-    z-index: 1;
-}
-
-.status-bar div {
-    color: white;
-    font-size: 14px;
-}
-
-.cellular {
-    display: flex;
-    align-items: center;
-}
-
-.wifi {
-    display: flex;
-    align-items: center;
-}
-
-.battery {
-    display: flex;
-    align-items: center;
-}
-
+/* Phone app container grid layout */
 .phone-app-container {
     position: absolute;
     top: 80px;
@@ -144,10 +177,7 @@ body {
     padding: 10px;
 }
 
-#click-prompt {
-    background-color: rgba(255, 165, 0, 0.8); /* Orange color */
-}
-
+/* Top gradient overlay for phone screen */
 .phone-screen::before {
     content: '';
     position: absolute;
@@ -159,6 +189,7 @@ body {
     border-radius: 30px 30px 0 0;
 }
 
+/* Bottom gradient overlay for phone screen */
 .phone-screen::after {
     content: '';
     position: absolute;
@@ -170,6 +201,7 @@ body {
     border-radius: 0 0 30px 30px;
 }
 
+/* Individual phone app styling */
 .phone-app {
     width: 80px;
     height: 80px;
@@ -177,8 +209,64 @@ body {
     border-radius: 16px;
     cursor: pointer;
     position: relative;
+    transition: transform 0.2s ease;
 }
 
+/* Hover effect for phone apps */
+.phone-app:hover {
+    transform: scale(1.05);
+}
+
+/* Status bar container */
+.status-bar {
+    position: absolute;
+    top: 30px;
+    right: 50px;
+    display: flex;
+    gap: 8px;
+    z-index: 1;
+}
+
+/* Status bar elements */
+.status-bar div {
+    color: white;
+    font-size: 14px;
+}
+
+/* Cellular signal icon container */
+.cellular {
+    display: flex;
+    align-items: center;
+}
+
+/* WiFi icon container */
+.wifi {
+    display: flex;
+    align-items: center;
+}
+
+/* Battery icon container */
+.battery {
+    display: flex;
+    align-items: center;
+}
+
+/* Click prompt styling */
+#click-prompt {
+    background-color: rgba(255, 165, 0, 0.8); /* Orange color */
+}
+
+/* Second click prompt styling */
+#click-prompt-2 {
+    background-color: rgba(0, 128, 255, 0.8); /* Blue color */
+}
+
+/* App label positioning for second prompt */
+#click-prompt-2 .app-label {
+    bottom: -40px;
+}
+
+/* App image styling */
 .app-image {
     width: 100%;
     height: 100%;
@@ -186,6 +274,7 @@ body {
     border-radius: inherit;
 }
 
+/* App label text styling */
 .app-label {
     position: absolute;
     bottom: -25px;
@@ -201,10 +290,33 @@ body {
     max-width: 80px;
     text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 2px;
 }
 
+/* App label text line styling */
+.app-label span {
+    display: block;
+    line-height: 1;
+}
+
+/* Coming soon app image styling */
+.app-image.coming-soon {
+    filter: grayscale(100%);
+    opacity: 0.7;
+}
+
+/* Coming soon text styling */
+.coming-soon-text {
+    font-size: 12px;
+    color: #888;
+    font-style: italic;
+    margin-top: 2px;
+}
+
+/* Full-screen loading overlay with black background */
 #loading-screen {
     position: fixed;
     top: 0;
@@ -221,16 +333,28 @@ body {
     transition: opacity 0.5s ease;
 }
 
+/* Fade in animation for loading screen */
 #loading-screen.fade-in {
     opacity: 1;
     visibility: visible;
 }
 
+/* Fade out animation for loading screen and disclaimer */
+#loading-screen.fade-out .disclaimer {
+    opacity: 0;
+}
+
+#loading-screen.fade-out {
+    opacity: 0;
+}
+
+/* Loading text container with centered content */
 .loading-text {
     display: flex;
     justify-content: center;
 }
 
+/* Text box container with flex layout and dark background */
 .text-box {
     display: flex;
     flex-direction: column;
@@ -241,6 +365,7 @@ body {
     border-radius: 1px;
 }
 
+/* Disclaimer text styling with absolute positioning */
 .disclaimer {
     position: absolute;
     bottom: 20px;
@@ -257,14 +382,12 @@ body {
     transition: opacity 0.5s ease;
 }
 
+/* Fade in animation for disclaimer text */
 .disclaimer.fade-in {
     opacity: 0.8;
 }
 
-#loading-screen.fade-out .disclaimer {
-    opacity: 0;
-}
-
+/* Text line styling with white color and text shadow */
 .text-line {
     color: white;
     font-family: 'Acropolis', sans-serif;
@@ -280,6 +403,7 @@ body {
     transform: translateY(20px);
 }
 
+/* Fade in animation for text lines with enhanced shadow */
 .text-line.fade-in {
     opacity: 1;
     transform: translateY(0);
@@ -290,22 +414,22 @@ body {
         1px 1px 5px rgba(255,255,255,0.5);
 }
 
+/* First text line with larger font size */
 .text-line:first-child {
     font-size: 67px;
 }
 
+/* Second text line with medium font size */
 .text-line:nth-child(2) {
     font-size: 62px;
 }
 
+/* Last text line with slightly smaller font size */
 .text-line:last-child {
     font-size: 61px;
 }
 
-#loading-screen.fade-out {
-    opacity: 0;
-}
-
+/* Square wrapper positioning for decorative elements */
 .square-wrapper {
     position: absolute;
     right: 0;
@@ -314,6 +438,7 @@ body {
     height: 85px;
 }
 
+/* Left-aligned square wrapper with pointer cursor */
 .square-wrapper.left {
     position: absolute;
     left: -10px;
@@ -323,10 +448,20 @@ body {
     cursor: pointer;
 }
 
+/* Pointer cursor for left square wrapper elements */
 .square-wrapper.left .square {
     cursor: pointer;
 }
 
+/* Small square wrapper positioning */
+.square-wrapper.small {
+    position: absolute;
+    top: 20px;
+    width: 120px;
+    height: 42.5px;
+}
+
+/* Name text styling with absolute positioning */
 .name-text {
     position: absolute;
     left: 170px;
@@ -336,6 +471,7 @@ body {
     z-index: 1000;
 }
 
+/* Name text heading with shadow effects */
 .name-text h1 {
     font-size: 36px;
     margin: 0;
@@ -349,13 +485,7 @@ body {
     letter-spacing: 2px;
 }
 
-.square-wrapper.small {
-    position: absolute;
-    top: 20px;
-    width: 120px;
-    height: 42.5px;
-}
-
+/* Social icon container with circular shape */
 .social {
     position: absolute;
     left: -25px;
@@ -371,6 +501,7 @@ body {
     transform: skewX(5deg);
 }
 
+/* Social link styling with flex layout */
 .social-link {
     text-decoration: none;
     color: white;
@@ -383,15 +514,23 @@ body {
     cursor: pointer;
 }
 
+/* Hover effect for social link label */
+.social-link:hover .label {
+    transform: translate(-40%, -50%) scale(1.1);
+}
+
+/* Social icon styling with black color */
 .social i {
     font-size: 30px;
     color: #000;
 }
 
+/* X icon specific styling with smaller size */
 .social i.fa-x {
     font-size: 24px;
 }
 
+/* Label text styling with absolute positioning */
 .label {
     position: absolute;
     top: 50%;
@@ -406,10 +545,7 @@ body {
     transition: transform 0.3s ease;
 }
 
-.social-link:hover .label {
-    transform: translate(-40%, -50%) scale(1.1);
-}
-
+/* Scrollable content container with blur effect */
 .scrollable-content {
     position: absolute;
     top: 80px;
@@ -427,34 +563,24 @@ body {
     z-index: 0;
 }
 
-.scrollable-content::-webkit-scrollbar {
-    display: none; /* Chrome, Safari and Opera */
-}
-
+/* Content wrapper flex container */
 .content-wrapper {
     display: flex;
 }
 
+/* Large square wrapper with 3D perspective */
 .large-square-wrapper {
-position: relative;
-width: 350px;
-height: 220px;
-perspective: 1000px;
+    position: relative;
+    width: 350px;
+    height: 220px;
+    perspective: 1000px;
 }
 
+/* Large square with 3D transform and hover effect */
 .large-square {
-position: absolute;
-width: 100%;
-height: 100%;
-background: rgba(255, 255, 255, 0.1);
-border: 2px solid #fff;
-transform: rotateX(10deg) rotateY(10deg);
-transform-style: preserve-3d;
-transition: transform 0.3s ease;
-display: flex;
-align-items: center;
-justify-content: center;
-cursor: pointer;
+    position: absolute;
+    width: 100%;
+    height: 100%;
     background: rgba(255, 255, 255, 0.1);
     border: 2px solid #fff;
     transform: rotateX(10deg) rotateY(10deg);
@@ -466,10 +592,12 @@ cursor: pointer;
     cursor: pointer;
 }
 
+/* Hover effect for large square */
 .large-square:hover {
     transform: rotateX(10deg) rotateY(10deg) scale(1.05);
 }
 
+/* Large social icon container with reverse 3D transform */
 .large-social {
     position: relative;
     transform: rotateX(-10deg) rotateY(-10deg);
@@ -479,11 +607,13 @@ cursor: pointer;
     gap: 10px;
 }
 
+/* Large social icon styling */
 .large-social i {
     font-size: 60px;
     color: white;
 }
 
+/* Large label text styling */
 .large-label {
     color: white;
     font-family: 'Lilita One', cursive;
@@ -493,6 +623,7 @@ cursor: pointer;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+/* Small square styling */
 .square.small {
     background-color: #000;
     background: #000;
@@ -501,6 +632,7 @@ cursor: pointer;
     border: none;
 }
 
+/* Base square styling with gradient and border */
 .square {
     position: absolute;
     top: 0;
@@ -517,6 +649,7 @@ cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5ca);
 }
 
+/* Home icon styling */
 .home-icon {
     font-size: 72px;
     color: #ffffff;
@@ -525,7 +658,7 @@ cursor: pointer;
     font-weight: 900;
 }
 
-
+/* Circle image styling */
 .circle-image {
     width: 65px;
     height: 65px;
@@ -534,16 +667,7 @@ cursor: pointer;
     transform: skewX(5deg);
 }
 
-header {
-    height: 40px;
-    background-color: #000;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 0;
-}
-
+/* Parallelogram section container with horizontal scroll */
 .parallelogram-section {
     display: flex;
     justify-content: flex-start;
@@ -560,10 +684,12 @@ header {
     min-height: 650px;
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
 .parallelogram-section::-webkit-scrollbar {
-    display: none;  /* Chrome, Safari and Opera */
+    display: none;
 }
 
+/* Base parallelogram styling */
 .parallelogram {
     width: 1000px;
     height: 610px;
@@ -579,6 +705,7 @@ header {
     margin-bottom: 10px;
 }
 
+/* First parallelogram specific styling with red gradient */
 .parallelogram:nth-child(1) {
     width: 800px;
     background: linear-gradient(135deg, 
@@ -592,6 +719,7 @@ header {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* Top bar for first parallelogram */
 .parallelogram:nth-child(1)::before {
     content: '';
     position: absolute;
@@ -603,6 +731,7 @@ header {
     z-index: 1;
 }
 
+/* Parallelogram content container */
 .parallelogram-content {
     transform: skewX(20deg);
     height: 100%;
@@ -613,6 +742,7 @@ header {
     padding: 20px;
 }
 
+/* Social icon styling within parallelogram */
 .parallelogram .social {
     width: 80px;
     height: 80px;
@@ -623,6 +753,7 @@ header {
     margin-bottom: 10px;
 }
 
+/* Label styling within parallelogram */
 .parallelogram .label {
     color: white;
     font-family: 'SF Pro Display', sans-serif;
@@ -631,6 +762,7 @@ header {
     letter-spacing: 0.5px;
 }
 
+/* Top text styling for first parallelogram */
 .parallelogram:nth-child(1) .top-text {
     position: absolute;
     top: 20px;
@@ -657,6 +789,7 @@ header {
         0px 4px 0 #000;
 }
 
+/* Bottom image positioning for first parallelogram */
 .parallelogram:nth-child(1) .bottom-image {
     position: absolute;
     bottom: -2px;
@@ -666,6 +799,7 @@ header {
     height: auto;
 }
 
+/* Text container positioning for first parallelogram */
 .parallelogram:nth-child(1) .text-container {
     position: absolute;
     top: 110px;
@@ -676,6 +810,7 @@ header {
     word-wrap: break-word;
 }
 
+/* Inside text styling for first parallelogram */
 .parallelogram:nth-child(1) .inside-text {
     color: #ffffff;
     font-family: 'Lilita One', cursive;
@@ -691,23 +826,12 @@ header {
     word-break: break-word;
 }
 
+/* First line margin for inside text */
 .parallelogram:nth-child(1) .first-line {
     margin-bottom: 30px;
 }
 
-footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-bottom: 10px solid #000;
-}
-
+/* Navigation items container */
 .nav-items {
     display: flex;
     gap: 180px;
@@ -717,6 +841,7 @@ footer {
     z-index: 1000;
 }
 
+/* Navigation item styling */
 .nav-item {
     color: #aab2c0;
     font-family: 'Lilita One', cursive;
@@ -736,6 +861,7 @@ footer {
     height: 40px;
 }
 
+/* Active navigation item styling */
 .nav-item.active {
     color: #fdc22a;
     font-size: 32px;
@@ -751,6 +877,7 @@ footer {
         1px 2px 0 #000;
 }
 
+/* Navigation item hover effect */
 .nav-item:hover {
     transform: scale(1.25);
     color: #fdc22a;
@@ -770,6 +897,7 @@ footer {
     z-index: 1000;
 }
 
+/* About Me Skills section with gradient background and glass effect */
 .parallelogram#about-me-skills {
     width: 740px;
     background: linear-gradient(135deg, 
@@ -785,6 +913,7 @@ footer {
     border-bottom: 6px solid rgba(0, 0, 0, 0.4);
 }
 
+/* Top bar for About Me Skills section */
 .parallelogram#about-me-skills::before {
     content: '';
     position: absolute;
@@ -796,6 +925,7 @@ footer {
     z-index: 1;
 }
 
+/* Title text styling for About Me Skills section */
 .parallelogram#about-me-skills .top-text {
     position: absolute;
     top: 20px;
@@ -822,6 +952,7 @@ footer {
         0px 4px 0 #000;
 }
 
+/* Text container positioning for About Me Skills section */
 .parallelogram#about-me-skills .text-container {
     position: absolute;
     top: 110px;
@@ -832,6 +963,7 @@ footer {
     word-wrap: break-word;
 }
 
+/* Inside text styling for About Me Skills section */
 .parallelogram#about-me-skills .inside-text {
     color: #ffffff;
     font-family: 'Lilita One', cursive;
@@ -848,6 +980,7 @@ footer {
     word-break: break-word;
 }
 
+/* Margin spacing for text lines in About Me Skills section */
 .parallelogram#about-me-skills .first-line {
     margin-bottom: 30px;
 }
@@ -860,6 +993,7 @@ footer {
     margin-bottom: 30px;
 }
 
+/* Bottom image positioning for About Me Skills section */
 .parallelogram#about-me-skills .bottom-image {
     position: absolute;
     bottom: -2px;
@@ -869,6 +1003,7 @@ footer {
     height: auto;
 }
 
+/* Skills grid layout with 3x2 grid */
 .parallelogram#about-me-skills .skills-grid {
     position: absolute;
     top: 57%;
@@ -882,6 +1017,7 @@ footer {
     z-index: 2;
 }
 
+/* Individual skill parallelogram styling */
 .parallelogram#about-me-skills .skill-parallelogram {
     background: rgba(255, 255, 255, 0.15);
     border: 3px solid rgba(0, 0, 0, 0.8);
@@ -898,73 +1034,76 @@ footer {
     transform: skewX(-5deg);
     transition: all 0.3s ease;
     position: relative;
+    cursor: pointer;
 }
 
-.parallelogram#about-me-skills .skill-parallelogram::after {
-    content: 'Education';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 40px;
-    background-color: rgb(92, 91, 103);
-    border-top: 3px solid rgba(0, 0, 0, 0.8);
-    z-index: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-family: 'Lilita One', cursive;
-    font-size: 20px;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        0px 2px 0 #000,
-        0px 3px 0 #000;
+/* Emoji icon styling for skill parallelograms */
+.parallelogram#about-me-skills .skill-parallelogram::before {
+    content: '';
+    font-size: 100px;
+    line-height: 1;
+    transform: skewX(5deg) translateY(-20px);
+    position: relative;
+    z-index: 2;
 }
 
+/* Specific emoji icons for each skill parallelogram */
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(1)::before {
+    content: '🎓';
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(2)::before {
+    content: '🏂';
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(3)::before {
+    content: '🤝';
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(4)::before {
+    content: '📢';
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(5)::before {
+    content: '👥';
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(6)::before {
+    content: '✨';
+}
+
+/* Hover effect for skill parallelograms */
 .parallelogram#about-me-skills .skill-parallelogram:hover {
     background: rgba(255, 255, 255, 0.2);
     box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
     transform: skewX(-5deg) scale(1.02);
 }
 
-.parallelogram#about-me-skills .skill-title {
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 24px;
-    margin-bottom: 10px;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        0px 2px 0 #000,
-        0px 3px 0 #000;
-    z-index: 2;
-}
-
-.parallelogram#about-me-skills .skill-level {
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 20px;
-    opacity: 0.9;
-    text-shadow: 
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        0px 2px 0 #000,
-        0px 3px 0 #000;
-    z-index: 2;
-}
-
+/* Offset for bottom row of skill parallelograms */
 .parallelogram#about-me-skills .skill-parallelogram:nth-child(n+4) {
     margin-left: -23px;
 }
 
+.parallelogram#projects {
+    width: auto;
+    background: none;
+    border: none;
+    box-shadow: none;
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    transform: none;
+    overflow: visible;
+    height: auto;
+    min-height: 610px;
+}
+
+.parallelogram#projects .parallelogram.project {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+/* Base project parallelogram styling with glass effect */
 .parallelogram.project {
     width: 300px;
     height: 610px;
@@ -980,6 +1119,7 @@ footer {
     margin-bottom: 10px;
 }
 
+/* Project 1 specific styling with dark purple gradient */
 .parallelogram.project#project1 {
     background: linear-gradient(135deg, 
         #1a0b2e 0%,
@@ -995,6 +1135,7 @@ footer {
     overflow: hidden;
 }
 
+/* Top bar for Project 1 */
 .parallelogram.project#project1 .top-bar {
     position: absolute;
     top: 0;
@@ -1005,6 +1146,7 @@ footer {
     z-index: 1;
 }
 
+/* Bottom bar for Project 1 */
 .parallelogram.project#project1 .bottom-bar {
     position: absolute;
     bottom: 0;
@@ -1015,6 +1157,7 @@ footer {
     z-index: 2;
 }
 
+/* Title image styling for Project 1 */
 .parallelogram.project#project1 .title-image {
     width: 220px;
     height: auto;
@@ -1022,6 +1165,7 @@ footer {
     filter: drop-shadow(0 0 10px rgba(255, 105, 180, 0.5));
 }
 
+/* Project title container positioning */
 .parallelogram.project#project1 .project-title {
     position: absolute;
     top: 0;
@@ -1034,6 +1178,7 @@ footer {
     z-index: 2;
 }
 
+/* Project content container positioning */
 .parallelogram.project#project1 .project-content {
     position: absolute;
     bottom: 0;
@@ -1047,6 +1192,7 @@ footer {
     justify-content: center;
 }
 
+/* Project link styling with hover effects */
 .parallelogram.project#project1 .project-link {
     display: inline-block;
     color: #ff69b4;
@@ -1063,12 +1209,14 @@ footer {
     z-index: 10;
 }
 
+/* Hover effect for project link */
 .parallelogram.project#project1 .project-link:hover {
     background-color: #ff69b4;
     color: #1a0b2e;
     box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
 }
 
+/* Organizer text styling */
 .parallelogram.project#project1 .organizer-text {
     position: absolute;
     top: 100px;
@@ -1082,6 +1230,7 @@ footer {
     white-space: nowrap;
 }
 
+/* Subtitle text styling */
 .parallelogram.project#project1 .subtitle-text {
     position: absolute;
     top: 130px;
@@ -1093,142 +1242,6 @@ footer {
     z-index: 2;
     text-align: right;
     white-space: nowrap;
-}
-
-.parallelogram.project#project4 {
-    background: linear-gradient(135deg, 
-        #000033 0%,
-        #000066 25%,
-        #000099 50%,
-        #000066 75%,
-        #000033 100%
-    );
-    position: relative;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    border: 3px solid #000;
-    border-bottom: 6px solid #000;
-    overflow: hidden;
-}
-
-.parallelogram.project#project4 .top-bar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    background-color: #000033;
-    z-index: 1;
-}
-
-.parallelogram.project#project4 .bottom-bar {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    background-color: #000033;
-    z-index: 2;
-}
-
-.parallelogram.project#project4 .title-image {
-    width: 220px;
-    height: auto;
-    transform: skewX(5deg);
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
-}
-
-.parallelogram.project#project4 .project-title {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 80px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2;
-}
-
-.parallelogram.project#project4 .project-content {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 100px;
-    text-align: center;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.parallelogram.project#project4 .project-link {
-    display: inline-block;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    border: 2px solid #ffffff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    background: rgba(255, 255, 255, 0.1);
-    transform: skewX(5deg);
-    margin: 0;
-    position: relative;
-    z-index: 10;
-}
-
-.parallelogram.project#project4 .project-link:hover {
-    background-color: #ffffff;
-    color: #000033;
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-}
-
-.parallelogram.project#project4 .organizer-text {
-    position: absolute;
-    top: 100px;
-    right: 30px;
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 20px;
-    transform: skewX(5deg);
-    z-index: 2;
-    text-align: right;
-    white-space: nowrap;
-}
-
-.parallelogram.project#project4 .subtitle-text {
-    position: absolute;
-    top: 130px;
-    right: 30px;
-    color: #ffffff;
-    font-family: 'Lilita One', cursive;
-    font-size: 16px;
-    transform: skewX(5deg);
-    z-index: 2;
-    text-align: right;
-    white-space: nowrap;
-}
-
-.parallelogram.project#project4 .title-text {
-    color: #ffffff;
-    font-family: 'Playfair Display', serif;
-    font-size: 28px;
-    font-weight: 600;
-    margin: 0;
-    text-shadow: 
-        -2px -2px 0 #000,
-        2px -2px 0 #000,
-        -2px 2px 0 #000,
-        2px 2px 0 #000,
-        -1px -1px 0 #000,
-        1px -1px 0 #000,
-        -1px 1px 0 #000,
-        1px 1px 0 #000,
-        0px 3px 0 #000,
-        0px 4px 0 #000;
-    transform: skewX(5deg);
-    letter-spacing: 1px;
 }
 
 .parallelogram.project#project2 {
@@ -1511,35 +1524,153 @@ footer {
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
 }
 
-.parallelogram#projects {
-    width: auto;
-    background: none;
-    border: none;
-    box-shadow: none;
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    transform: none;
-    overflow: visible;
-    height: auto;
-    min-height: 610px;
+/* Project 4 specific styling with navy blue gradient */
+.parallelogram.project#project4 {
+    background: linear-gradient(135deg, 
+        #000033 0%,
+        #000066 25%,
+        #000099 50%,
+        #000066 75%,
+        #000033 100%
+    );
+    position: relative;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border: 3px solid #000;
+    border-bottom: 6px solid #000;
+    overflow: hidden;
 }
 
-.parallelogram#projects .parallelogram.project {
-    margin-bottom: 0;
-    flex-shrink: 0;
-}
-
-.parallelogram#projects .small-black-parallelogram {
+/* Top bar for Project 4 */
+.parallelogram.project#project4 .top-bar {
     position: absolute;
-    top: -60px;
-    left: 105px;
-    width: 60px;
-    height: 60px;
-    background-color: #000;
-    transform: skewX(-5deg);
-    z-index: 3;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #000033;
+    z-index: 1;
 }
+
+/* Bottom bar for Project 4 */
+.parallelogram.project#project4 .bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    background-color: #000033;
+    z-index: 2;
+}
+
+/* Title image styling for Project 4 */
+.parallelogram.project#project4 .title-image {
+    width: 220px;
+    height: auto;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
+}
+
+/* Project title container for Project 4 */
+.parallelogram.project#project4 .project-title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+/* Project content container for Project 4 */
+.parallelogram.project#project4 .project-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100px;
+    text-align: center;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Project link styling for Project 4 */
+.parallelogram.project#project4 .project-link {
+    display: inline-block;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.1);
+    transform: skewX(5deg);
+    margin: 0;
+    position: relative;
+    z-index: 10;
+}
+
+/* Hover effect for Project 4 link */
+.parallelogram.project#project4 .project-link:hover {
+    background-color: #ffffff;
+    color: #000033;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+}
+
+/* Organizer text styling for Project 4 */
+.parallelogram.project#project4 .organizer-text {
+    position: absolute;
+    top: 100px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Subtitle text styling for Project 4 */
+.parallelogram.project#project4 .subtitle-text {
+    position: absolute;
+    top: 130px;
+    right: 30px;
+    color: #ffffff;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    transform: skewX(5deg);
+    z-index: 2;
+    text-align: right;
+    white-space: nowrap;
+}
+
+/* Title text styling for Project 4 with enhanced text shadow */
+.parallelogram.project#project4 .title-text {
+    color: #ffffff;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 3px 0 #000,
+        0px 4px 0 #000;
+    transform: skewX(5deg);
+    letter-spacing: 1px;
+}
+
 .parallelogram#contact-me {
     width: 740px;
     background: linear-gradient(135deg, 
@@ -1723,6 +1854,7 @@ footer {
 .parallelogram#contact-me .skill-parallelogram:nth-child(n+4) {
     margin-left: -23px;
 }
+
 .contact-form {
     position: absolute;
     top: 120px;
@@ -2044,9 +2176,21 @@ footer {
     object-position: center;
     opacity: 0;
     transition: all 0.5s ease-in-out;
-    animation: rotateImages 24s infinite;
+    animation: rotateImages 24s infinite, pulse 2s ease-in-out infinite;
     transform-origin: center center;
     backface-visibility: hidden;
+}
+
+@keyframes pulse {
+    0% {
+        transform: skewX(5deg) scale(1);
+    }
+    50% {
+        transform: skewX(5deg) scale(1.05);
+    }
+    100% {
+        transform: skewX(5deg) scale(1);
+    }
 }
 
 /* Animation delays for all projects */
@@ -2221,9 +2365,21 @@ footer {
     object-position: center;
     opacity: 0;
     transition: all 0.5s ease-in-out;
-    animation: rotateImages 24s infinite;
+    animation: rotateImages 24s infinite, pulse 2s ease-in-out infinite;
     transform-origin: center center;
     backface-visibility: hidden;
+}
+
+@keyframes pulse {
+    0% {
+        transform: skewX(5deg) scale(1);
+    }
+    50% {
+        transform: skewX(5deg) scale(1.05);
+    }
+    100% {
+        transform: skewX(5deg) scale(1);
+    }
 }
 
 /* Animation delays for all projects */
@@ -2311,13 +2467,7 @@ footer {
 
 /* Project 7 specific styles */
 .parallelogram.project#project7 {
-    background: linear-gradient(135deg, 
-        #faae20 0%,
-        #fbb033 25%,
-        #fcb246 50%,
-        #fbb033 75%,
-        #faae20 100%
-    );
+    background: transparent;
     position: relative;
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
     border: 3px solid #000;
@@ -2331,7 +2481,7 @@ footer {
     left: 0;
     right: 0;
     height: 80px;
-    background-color: #e69d1a;
+    background-color: rgba(230, 157, 26, 0.8);
     z-index: 1;
 }
 
@@ -2341,7 +2491,7 @@ footer {
     left: 0;
     right: 0;
     height: 100px;
-    background-color: #e69d1a;
+    background-color: rgba(230, 157, 26, 0.8);
     z-index: 2;
 }
 
@@ -2446,9 +2596,21 @@ footer {
     object-position: center;
     opacity: 0;
     transition: all 0.5s ease-in-out;
-    animation: rotateImages 24s infinite;
+    animation: rotateImages 24s infinite, pulse 2s ease-in-out infinite;
     transform-origin: center center;
     backface-visibility: hidden;
+}
+
+@keyframes pulse {
+    0% {
+        transform: skewX(5deg) scale(1);
+    }
+    50% {
+        transform: skewX(5deg) scale(1.05);
+    }
+    100% {
+        transform: skewX(5deg) scale(1);
+    }
 }
 
 /* Animation delays for project7 */
@@ -2643,9 +2805,21 @@ footer {
     object-position: center;
     opacity: 0;
     transition: all 0.5s ease-in-out;
-    animation: rotateImages 24s infinite;
+    animation: rotateImages 24s infinite, pulse 2s ease-in-out infinite;
     transform-origin: center center;
     backface-visibility: hidden;
+}
+
+@keyframes pulse {
+    0% {
+        transform: skewX(5deg) scale(1);
+    }
+    50% {
+        transform: skewX(5deg) scale(1.05);
+    }
+    100% {
+        transform: skewX(5deg) scale(1);
+    }
 }
 
 /* Animation delays for project8 */
@@ -2673,4 +2847,650 @@ footer {
     border-radius: 12px;
 }
 
+/* Add pulse animation keyframes */
+@keyframes pulse {
+    0% {
+        transform: skewX(5deg) scale(1);
+    }
+    50% {
+        transform: skewX(5deg) scale(1.05);
+    }
+    100% {
+        transform: skewX(5deg) scale(1);
+    }
+}
 
+/* VRC specific styles */
+.parallelogram.project#project4 .image-container {
+    position: absolute;
+    top: 49%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 230px;
+    height: 330px;
+    z-index: 0;
+}
+
+.parallelogram.project#project4 .vrc-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: skewX(5deg);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: skewX(5deg) scale(1);
+    }
+    50% {
+        transform: skewX(5deg) scale(1.05);
+    }
+    100% {
+        transform: skewX(5deg) scale(1);
+    }
+}
+
+.parallelogram.project#project7 .hope-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/hope.jpg');
+    background-size: cover;
+    background-position: center;
+
+    z-index: 0;
+    opacity: 0.8;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(1)::after {
+    content: 'Education';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgb(92, 91, 103);
+    border-top: 3px solid rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(2)::after {
+    content: 'Sports';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgb(92, 91, 103);
+    border-top: 3px solid rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(3)::after {
+    content: 'Side Quests';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgb(92, 91, 103);
+    border-top: 3px solid rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(4)::after {
+    content: 'Marketing';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgb(92, 91, 103);
+    border-top: 3px solid rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(5)::after {
+    content: 'Clubs';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgb(92, 91, 103);
+    border-top: 3px solid rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
+}
+
+.parallelogram#about-me-skills .skill-parallelogram:nth-child(6)::after {
+    content: 'Fun Facts';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40px;
+    background-color: rgb(92, 91, 103);
+    border-top: 3px solid rgba(0, 0, 0, 0.8);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 2px 0 #000,
+        0px 3px 0 #000;
+}
+
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.popup-content {
+    background: linear-gradient(135deg, 
+        #1586ea 0%,
+        #0f6bc2 50%,
+        #1586ea 100%
+    );
+    padding: 40px;
+    border-radius: 15px;
+    width: 1100px;
+    height: 700px;
+    max-height: 90vh;
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+    animation: popupFadeIn 0.3s ease-out;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+}
+
+.popup-content::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-color: #2493f6;
+    border-radius: 15px 15px 0 0;
+    z-index: 1;
+}
+
+.popup-content::after {
+    content: '';
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    height: 6px;
+    background-color: #155bc0;
+    z-index: 2;
+    border-radius: 0;
+}
+
+.popup-content-bar-2 {
+    content: '';
+    position: absolute;
+    top: 86px;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: #00349a;
+    z-index: 3;
+    border-radius: 0;
+}
+
+@keyframes popupFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.popup-title {
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 36px;
+    margin: 0;
+    text-align: center;
+    flex-shrink: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000,
+        0px 3px 0 #000,
+        0px 4px 0 #000;
+}
+
+.popup-text {
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 25px;
+    line-height: 1.8;
+    margin: 0;
+    padding-top: 80px;
+    flex-grow: 1;
+    overflow: visible;
+    font-weight: 400;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+.education-images {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 40px;
+    margin-top: 30px;
+    padding: 0 40px;
+}
+
+.education-image {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.education-image img {
+    width: 300px;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.education-image img:hover {
+    transform: scale(1.02);
+}
+
+.education-image p {
+    color: white;
+    font-family: 'Lilita One', cursive;
+    font-size: 20px;
+    margin: 0;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+.close-popup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: transform 0.2s;
+}
+
+.close-popup:hover {
+    transform: scale(1.1);
+}
+
+.skill-parallelogram {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.skill-parallelogram:hover {
+    transform: scale(1.05);
+}
+
+.popup-parallelogram {
+    position: absolute;
+    top: 5px;
+    right: -10px;
+    width: 90px;
+    height: 67px;
+    background: linear-gradient(to bottom, 
+        #f55e56 0%,
+        #f55e56 5px,
+        #e6311f 5px,
+        #e6311f calc(100% - 5px),
+        #9f0029 calc(100% - 5px),
+        #9f0029 100%
+    );
+    transform: skewX(-5deg);
+    z-index: 4;
+    border-radius: 8px;
+    border: 3px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.popup-parallelogram::before {
+    content: '×';
+    color: white;
+    font-size: 80px;
+    font-weight: bold;
+    transform: skewX(5deg);
+    text-shadow: 
+        -2px -2px 0 #000,
+        2px -2px 0 #000,
+        -2px 2px 0 #000,
+        2px 2px 0 #000,
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+.sports-carousel {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.carousel-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    border: 3px solid #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    object-fit: cover;
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+}
+
+.carousel-prev,
+.carousel-next {
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    pointer-events: auto;
+}
+
+.carousel-prev:hover,
+.carousel-next:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.instagram-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    width: 100%;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.instagram-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px 20px;
+    background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid #000;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-size: 16px;
+    text-align: center;
+}
+
+.instagram-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.instagram-button i {
+    font-size: 1.4em;
+}
+
+.clubs-scroll {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    margin-top: 20px;
+    padding: 20px 0;
+}
+
+.clubs-track {
+    display: flex;
+    animation: scroll 30s linear infinite;
+    width: fit-content;
+}
+
+.club-item {
+    flex: 0 0 200px;
+    margin: 0 15px;
+    text-align: center;
+}
+
+.club-item img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 3px solid #000;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.club-item p {
+    margin-top: 10px;
+    font-family: 'Lilita One', cursive;
+    color: white;
+    font-size: 18px;
+    text-shadow: 
+        -1px -1px 0 #000,
+        1px -1px 0 #000,
+        -1px 1px 0 #000,
+        1px 1px 0 #000;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+.side-quest-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    width: 100%;
+    padding: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.side-quest-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 150px;
+    height: 180px;
+    padding: 15px;
+    background: linear-gradient(135deg, #0f6bc2 0%, #0a4d8c 50%, #0f6bc2 100%);
+    color: white;
+    text-decoration: none;
+    font-family: 'Lilita One', cursive;
+    font-size: 16px;
+    text-align: center;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    word-wrap: break-word;
+}
+
+.side-quest-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    color: white;
+    text-decoration: none;
+}
+
+/* Override hover effect for mobile app */
+#click-prompt-2:hover {
+    transform: none;
+    cursor: default;
+}

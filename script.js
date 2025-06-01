@@ -60,11 +60,11 @@ window.addEventListener('load', function() {
         return;
     }
 
-    // Add click event listener to the app
+    // Add click event listener to the first app (computer)
     phoneApp.addEventListener('click', startLoading);
 
     function startLoading() {
-        // Remove click event listener to prevent multiple triggers
+        // Remove click event listeners to prevent multiple triggers
         phoneApp.removeEventListener('click', startLoading);
 
         // Set flag in localStorage
@@ -144,7 +144,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Function to check which section is in view
     function checkVisibleSection() {
         const scrollLeft = parallelogramSection.scrollLeft;
         const containerWidth = parallelogramSection.clientWidth;
@@ -178,17 +177,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Add scroll event listener
-    parallelogramSection.addEventListener('scroll', checkVisibleSection);
-
-    // Initial check
-    checkVisibleSection();
+    if (parallelogramSection) {
+        parallelogramSection.addEventListener('scroll', checkVisibleSection);
+        // Initial check
+        checkVisibleSection();
+    }
 
     navItems.forEach(item => {
         item.addEventListener('click', function() {
             const sectionId = this.getAttribute('data-section');
             const targetSection = document.getElementById(sectionId);
             
-            if (targetSection) {
+            if (targetSection && parallelogramSection) {
                 const scrollPosition = targetSection.offsetLeft - 100; // Account for left padding
                 parallelogramSection.scrollTo({
                     left: scrollPosition,
@@ -343,4 +343,302 @@ function initGlobe() {
 // Initialize globe when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     initGlobe();
+});
+
+// 3D Camera Model
+function initCameraModel() {
+    const container = document.getElementById('camera-container');
+    if (!container) return;
+
+    const canvas = document.getElementById('camera-canvas');
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(container.clientWidth, container.clientHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+    camera.position.z = 5;
+
+    // Create camera body
+    const bodyGeometry = new THREE.BoxGeometry(2, 1.5, 1);
+    const bodyMaterial = new THREE.MeshPhongMaterial({ color: 0x333333 });
+    const body = new THREE.Mesh(bodyGeometry, bodyMaterial);
+
+    // Create lens
+    const lensGeometry = new THREE.CylinderGeometry(0.5, 0.5, 0.2, 32);
+    const lensMaterial = new THREE.MeshPhongMaterial({ color: 0x111111 });
+    const lens = new THREE.Mesh(lensGeometry, lensMaterial);
+    lens.rotation.x = Math.PI / 2;
+    lens.position.z = 0.6;
+
+    // Create viewfinder
+    const viewfinderGeometry = new THREE.BoxGeometry(0.3, 0.3, 0.1);
+    const viewfinderMaterial = new THREE.MeshPhongMaterial({ color: 0x222222 });
+    const viewfinder = new THREE.Mesh(viewfinderGeometry, viewfinderMaterial);
+    viewfinder.position.set(0.7, 0.5, 0);
+
+    // Group all parts
+    const cameraModel = new THREE.Group();
+    cameraModel.add(body);
+    cameraModel.add(lens);
+    cameraModel.add(viewfinder);
+    scene.add(cameraModel);
+
+    // Add lights
+    const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+    scene.add(ambientLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(5, 5, 5);
+    scene.add(directionalLight);
+
+    // Animation
+    function animate() {
+        requestAnimationFrame(animate);
+        cameraModel.rotation.y += 0.01;
+        renderer.render(scene, camera);
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        camera.aspect = width / height;
+        camera.updateProjectionMatrix();
+        renderer.setSize(width, height);
+    });
+
+    animate();
+}
+
+// Initialize camera model when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    initCameraModel();
+});
+
+// Popup functionality for skill parallelograms
+document.addEventListener('DOMContentLoaded', function() {
+    const skillParallelograms = document.querySelectorAll('.skill-parallelogram');
+    
+    // Create popup overlay
+    const popupOverlay = document.createElement('div');
+    popupOverlay.className = 'popup-overlay';
+    document.body.appendChild(popupOverlay);
+
+    // Create popup content
+    const popupContent = document.createElement('div');
+    popupContent.className = 'popup-content';
+    popupOverlay.appendChild(popupContent);
+
+    // Add the small red parallelogram
+    const popupParallelogram = document.createElement('div');
+    popupParallelogram.className = 'popup-parallelogram';
+    popupContent.appendChild(popupParallelogram);
+
+    // Add click event listener to the parallelogram to close the popup
+    popupParallelogram.addEventListener('click', function() {
+        popupOverlay.style.display = 'none';
+    });
+
+    // Add the 3px bar as a child for the third bar
+    const popupBar2 = document.createElement('div');
+    popupBar2.className = 'popup-content-bar-2';
+    popupContent.appendChild(popupBar2);
+
+    // Create close button
+    const closeButton = document.createElement('button');
+    closeButton.className = 'close-popup';
+    closeButton.innerHTML = '×';
+    popupContent.appendChild(closeButton);
+
+    // Create title element
+    const popupTitle = document.createElement('h2');
+    popupTitle.className = 'popup-title';
+    popupContent.appendChild(popupTitle);
+
+    // Create text element
+    const popupText = document.createElement('div');
+    popupText.className = 'popup-text';
+    popupContent.appendChild(popupText);
+
+    // Create image container for education popup
+    const imageContainer = document.createElement('div');
+    imageContainer.className = 'education-images';
+    popupContent.appendChild(imageContainer);
+
+    // Define popup content for each skill
+    const popupContents = {
+        'education': {
+            title: 'Education',
+            text: 'I\'m a grade 12 student @ Unionville H.S, where I am enrolled in the STEM program and Information-Communication Technology SHSM. This fall, I\'ll be heading to Purdue to study Motorsports Engineering—because if you\'re going to obsess over fast cars, you might as well get a degree out of it.',
+            images: true
+        },
+        'sports': {
+            title: 'Sports',
+            text: 'I am trying to beat the stigma that engineers dont touch grass, so I play a lot of sports. In high school, I did varsity snowboarding, rock climbing, mountain biking, slo-pitch, flag football, and track/field. I somehow ended up ranked 56th in Ontario for girls alpine snowboarding, which is one of my proudest accomplishments. So whether competitive or just for fun, sports have always been part of my day.',
+            images: true
+        },
+        'side-quests': {
+            title: 'Side Quests',
+            text: 'I\'ve always had a habit of wandering off the main path, and honestly? That\'s where some of the coolest moments have happened. Like spending a month at Shad UBC in 2023, where I lived with 50 strangers, created wild ideas, and realized how much I love brainstorming at 1AM. Or guest speaking at EmpowerED, where I got to talk about STEM outreach and probably overshared about robots. I also somehow got a song I wrote featured in an exhibit at the Royal Ontario Museum. In the competition realm, I lead my team to win the Real World Design Challenge in 2023 and become regional finalists in the Samsung Solve for Tomorrow 2025 challenge. None of these were part of the "plan," but all of them pushed me, shaped me, and reminded me that the detours are sometimes the best part of the adventure.',
+            links: [
+                { name: 'Shad Canada', url: 'https://www.shad.ca/' },
+                { name: 'Real World Design Challenge', url: 'https://www.realworlddesignchallenge.org/' },
+                { name: 'Samsung Solve for Tomorrow', url: 'https://www.samsung.com/ca/sustainability/corporate-citizenship/solve-for-tomorrow/' },
+                { name: '#MyPandemicStory ROM Exhibit', url: 'https://www.rom.on.ca/en/exhibitions-galleries/exhibitions/mypandemicstory' },
+                { name: 'EmpowerED', url: 'https://www.linkedin.com/company/em-empower-ed/' }
+            ]
+        },
+        'marketing': {
+            title: 'Marketing',
+            text: 'My marketing experience started with me making brainrot—and somehow, I went viral. Apart from the projects in my resume, I got to do lots of freelance, plus work at Atlos Media under our favourite uni influencer limmytalks. I\'ve made really bad viral Instagram reels for everything from zombie-themed coding events to robotics fundraisers, and if there\'s one thing I\'ve learned, it\'s that good marketing isn\'t about being loud—it\'s about being clever, clear, and just a little bit chaotic. I am always looking for freelance work, so let me know how I can help!',
+            instagram: [
+                { handle: '@hackathoncanada', url: 'https://www.instagram.com/hackathoncanada' },
+                { handle: '@roboticsuhs', url: 'https://www.instagram.com/roboticsuhs' },
+                { handle: '@apohacks', url: 'https://www.instagram.com/apohacks' },
+                { handle: '@frc7902', url: 'https://www.instagram.com/frc7902' },
+                { handle: '@hack49__', url: 'https://www.instagram.com/hack49__' },
+                { handle: '@hackcanada', url: 'https://www.instagram.com/hackcanada' },
+                { handle: '@samthewolfofficial', url: 'https://www.instagram.com/samthewolfofficial' },
+                { handle: '@uhsavteam', url: 'https://www.instagram.com/uhsavteam' },
+                { handle: '@uhschemistryclub', url: 'https://www.instagram.com/uhschemistryclub' },
+                { handle: '@unionvillescienceclub', url: 'https://www.instagram.com/unionvillescienceclub' },
+                { handle: '@_bwomp', url: 'https://www.instagram.com/_bwomp' },
+                { handle: '@realevwong', url: 'https://www.instagram.com/realevwong' }
+            ]
+        },
+        'clubs': {
+            title: 'Clubs',
+            text: 'Some people dabble in one club, but I said, "why not all of them?" I\'ve hopped around everything from building robots to writing songs about them. Whether it\'s running audio-visual for school events, doing design competitions, or staying after hours for chess club showdowns, I\'ve always found a way to nerd out with people who love learning as much as I do. DECA taught me how to pitch, chemistry taught me how to not accidentally blow things up (usually), and robotics taught me how to build from scratch—both machines and resilience.',
+            images: true,
+            clubs: [
+                { image: 'images/clubs1.jpg', name: 'A/V' },
+                { image: 'images/clubs2.jpg', name: 'DECA' },
+                { image: 'images/clubs3.jpg', name: 'Chemistry ' },
+                { image: 'images/clubs4.jpg', name: 'Robotics' },
+                { image: 'images/clubs5.jpg', name: 'Science' }
+            ]
+        },
+        'fun-facts': {
+            title: 'Fun Facts',
+            text: '• I have over 2,000 volunteer hours<br>• I\'m first aid certified and I\'ve been doing childcare for 6 years<br>• I can play 7 instruments! Or at least I could, idk if i could still play my elementary school band saxophone.<br>• I\'ve attended 7 hackathons and won awards at 3 of them. Never won an overall prize though<br>• I have more LinkedIn connections than Instagram followers. I don\'t know how to recover from that.<br>• I can read Aurebesh (yes, the Star Wars language).<br>• I refuse to play clash of clans, but I have 21k brawl stars and 6.8k clash royale. I main piper and I have this really dumb hog rider-wall breaker deck'
+        }
+    };
+
+    // Add click event listeners to skill parallelograms
+    skillParallelograms.forEach((parallelogram, index) => {
+        parallelogram.addEventListener('click', function() {
+            const skillType = Object.keys(popupContents)[index];
+            const content = popupContents[skillType];
+            
+            popupTitle.textContent = content.title;
+            popupText.innerHTML = content.text;
+            
+            // Handle images for education popup
+            if (content.images || content.instagram || content.links) {
+                if (skillType === 'sports') {
+                    imageContainer.innerHTML = `
+                        <div class="sports-carousel">
+                            <div class="carousel-container">
+                                <img src="images/sports1.jpg" alt="Sports 1" class="carousel-slide active">
+                                <img src="images/sports2.jpg" alt="Sports 2" class="carousel-slide">
+                                <img src="images/sports3.jpg" alt="Sports 3" class="carousel-slide">
+                                <img src="images/sports4.jpg" alt="Sports 4" class="carousel-slide">
+                            </div>
+                        </div>
+                    `;
+                    imageContainer.style.display = 'flex';
+                    
+                    // Initialize sports carousel
+                    const carousel = imageContainer.querySelector('.sports-carousel');
+                    const slides = carousel.querySelectorAll('.carousel-slide');
+                    let currentSlide = 0;
+
+                    function showSlide(index) {
+                        slides.forEach(slide => slide.classList.remove('active'));
+                        slides[index].classList.add('active');
+                    }
+
+                    function nextSlide() {
+                        currentSlide = (currentSlide + 1) % slides.length;
+                        showSlide(currentSlide);
+                    }
+
+                    // Auto-advance slides every 3 seconds
+                    setInterval(nextSlide, 3000);
+                } else if (skillType === 'marketing' && content.instagram) {
+                    imageContainer.innerHTML = `
+                        <div class="instagram-buttons">
+                            ${content.instagram.map(account => `
+                                <a href="${account.url}" target="_blank" class="instagram-button">
+                                    <i class="fab fa-instagram"></i>
+                                    ${account.handle}
+                                </a>
+                            `).join('')}
+                        </div>
+                    `;
+                    imageContainer.style.display = 'flex';
+                } else if (skillType === 'clubs' && content.clubs) {
+                    imageContainer.innerHTML = `
+                        <div class="clubs-scroll">
+                            <div class="clubs-track">
+                                ${content.clubs.map(club => `
+                                    <div class="club-item">
+                                        <img src="${club.image}" alt="${club.name}">
+                                        <p>${club.name}</p>
+                                    </div>
+                                `).join('')}
+                                ${content.clubs.map(club => `
+                                    <div class="club-item">
+                                        <img src="${club.image}" alt="${club.name}">
+                                        <p>${club.name}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `;
+                    imageContainer.style.display = 'block';
+                } else if (skillType === 'side-quests' && content.links) {
+                    imageContainer.innerHTML = `
+                        <div class="side-quest-buttons">
+                            ${content.links.map(link => `
+                                <a href="${link.url}" target="_blank" class="side-quest-button">
+                                    ${link.name}
+                                </a>
+                            `).join('')}
+                        </div>
+                    `;
+                    imageContainer.style.display = 'flex';
+                } else {
+                    imageContainer.innerHTML = `
+                        <div class="education-image">
+                            <img src="images/uhs.jpg" alt="Unionville High School" onclick="window.open('https://www.instagram.com/samthewolfofficial', '_blank')">
+                            <p>my high school</p>
+                        </div>
+                        <div class="education-image">
+                            <img src="images/purdue.jpeg" alt="Purdue University" onclick="window.open('https://www.purdue.edu/', '_blank')">
+                            <p>my university</p>
+                        </div>
+                    `;
+                    imageContainer.style.display = 'flex';
+                }
+            } else {
+                imageContainer.style.display = 'none';
+            }
+            
+            popupOverlay.style.display = 'flex';
+        });
+    });
+
+    // Close popup when clicking the close button
+    closeButton.addEventListener('click', function() {
+        popupOverlay.style.display = 'none';
+    });
+
+    // Close popup when clicking outside the content
+    popupOverlay.addEventListener('click', function(e) {
+        if (e.target === popupOverlay) {
+            popupOverlay.style.display = 'none';
+        }
+    });
 });
